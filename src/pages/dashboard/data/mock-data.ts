@@ -14,7 +14,7 @@ export const DAILY_REVENUE: DailyRevenue[] = [
   { day: 'Sel', revenue: 2_230_000, transactions: 58 },
   { day: 'Rab', revenue: 1_640_000, transactions: 37 },
   { day: 'Kam', revenue: 2_780_000, transactions: 71 },
-  { day: "Jum", revenue: 3_120_000, transactions: 84 },
+  { day: 'Jum', revenue: 3_120_000, transactions: 84 },
   { day: 'Sab', revenue: 3_850_000, transactions: 97 },
   { day: 'Min', revenue: 2_460_000, transactions: 63 },
 ]
