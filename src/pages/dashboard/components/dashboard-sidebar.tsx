@@ -1,46 +1,9 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import Icon from '@/components/icons'
+import type { MenuItem } from '@/types/menu'
+import { MENU_ITEMS } from '@/config';
 
-type MenuItem = {
-  label: string
-  href?: string
-  icon?: string
-  children?: MenuItem[]
-}
-
-const MENU_ITEMS: MenuItem[] = [
-  { label: 'Dashboard', href: '/dashboard', icon: 'layout-dashboard' },
-  {
-    label: 'Sales & Orders',
-    icon: 'shopping-cart',
-    children: [
-      { label: 'Transactions', href: '/transactions', icon: 'receipt' },
-      { label: 'Orders', href: '/orders', icon: 'package' },
-      { label: 'Invoices', href: '/invoices', icon: 'file-text' },
-    ],
-  },
-  { label: 'Pos', href: '/pos', icon: 'point-of-sale' },
-  {
-    label: 'Inventory',
-    icon: 'box',
-    children: [
-      { label: 'Products', href: '/inventory/products', icon: 'package-2' },
-      { label: 'Categories', href: '/inventory/categories', icon: 'folder' },
-      { label: 'Stock', href: '/inventory/stock', icon: 'warehouse' },
-    ],
-  },
-  {
-    label: 'Reports & Analytics',
-    icon: 'bar-chart-3',
-    children: [
-      { label: 'Sales Reports', href: '/reports/sales', icon: 'line-chart' },
-      { label: 'Analytics', href: '/reports/analytics', icon: 'activity' },
-      { label: 'Inventory Reports', href: '/reports/inventory', icon: 'pie-chart' },
-    ],
-  },
-  { label: 'Settings', href: '/settings', icon: 'settings' },
-]
 
 type MenuItemProps = {
   item: MenuItem

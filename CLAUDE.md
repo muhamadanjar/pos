@@ -49,6 +49,8 @@ No router installed. `App.tsx` directly renders the active page.
 
 Design tokens (colors, radius, fonts) live in `src/index.css` under `@theme inline`. Do not add a `tailwind.config.*` file — v4 reads config from CSS. Shadcn CSS variables follow oklch color space.
 
+Custom Style in folder `src/styles/`
+
 ### State Management
 - **Selector pattern mandatory** — Zustand state queries must use selectors, never destructure
 - **Async IIFE for side effects** — Fire-and-forget async in Zustand stores

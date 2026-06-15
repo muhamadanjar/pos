@@ -64,7 +64,4 @@ function Button({
   )
 }
 
-export { Button }
-export type { VariantProps }
-
-export const getButtonVariants = () => buttonVariants
+export { Button, buttonVariants }
