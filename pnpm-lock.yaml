@@ -17,6 +17,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.4.0
         version: 5.4.0(react-hook-form@7.79.0(react@19.2.7))
+      '@radix-ui/react-slot':
+        specifier: ^1.2.5
+        version: 1.2.5(@types/react@19.2.17)(react@19.2.7)
       '@tailwindcss/vite':
         specifier: ^4.3.1
         version: 4.3.1(vite@8.0.16(@types/node@24.13.2)(jiti@2.7.0))
@@ -56,6 +59,9 @@ importers:
       react-dom:
         specifier: ^19.2.6
         version: 19.2.7(react@19.2.7)
+      react-hook-form:
+        specifier: ^7.79.0
+        version: 7.79.0(react@19.2.7)
       react-hooks-form:
         specifier: ^2.0.1
         version: 2.0.1(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
