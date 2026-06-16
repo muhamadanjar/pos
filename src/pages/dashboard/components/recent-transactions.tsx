@@ -1,5 +1,7 @@
 import type { RecentTransaction } from '../data/mock-data'
 import { RECENT_TRANSACTIONS, fmt } from '../data/mock-data'
+import { cn } from '@/lib/utils'
+import { Badge } from '@/components/ui/badge'
 import { Card, CardHeader, CardContent } from '@/components/ui/card'
 
 const PAYMENT_LABELS: Record<RecentTransaction['paymentMethod'], string> = {
@@ -8,10 +10,10 @@ const PAYMENT_LABELS: Record<RecentTransaction['paymentMethod'], string> = {
   qris: 'QRIS',
 }
 
-const PAYMENT_STYLES: Record<RecentTransaction['paymentMethod'], { bg: string; color: string }> = {
-  cash: { bg: 'var(--ds-surface-high)', color: 'var(--ds-on-surface-variant)' },
-  card: { bg: 'var(--ds-secondary-container)', color: 'var(--ds-secondary)' },
-  qris: { bg: 'var(--ds-primary-container)', color: 'var(--ds-on-primary-container)' },
+const PAYMENT_CLASSES: Record<RecentTransaction['paymentMethod'], string> = {
+  cash: 'bg-ds-surface-high text-ds-on-surface-variant',
+  card: 'bg-ds-secondary-container text-ds-secondary',
+  qris: 'bg-ds-primary-container text-ds-on-primary-container',
 }
 
 export default function RecentTransactions() {
@@ -30,34 +32,28 @@ export default function RecentTransactions() {
 
       <CardContent>
         <div className="flex flex-col">
-          {RECENT_TRANSACTIONS.map((tx) => {
-            const badge = PAYMENT_STYLES[tx.paymentMethod]
-            return (
-              <div
-                key={tx.id}
-                className="py-3 flex items-center gap-4"
-              >
-                <div className="shrink-0">
-                  <p className="text-sm font-semibold text-ds-on-surface">
-                    {tx.customer}
-                  </p>
-                  <p className="text-xs mt-0.5 text-ds-on-surface-variant">
-                    {tx.id} · {tx.items} item · {tx.time}
-                  </p>
-                </div>
-                <div className="flex-1" />
-                <span
-                  className="px-2.5 py-0.5 rounded-full text-xs font-medium shrink-0"
-                  style={{ background: badge.bg, color: badge.color }}
-                >
-                  {PAYMENT_LABELS[tx.paymentMethod]}
-                </span>
-                <span className="text-sm font-bold shrink-0 w-24 text-right text-ds-on-surface">
-                  {fmt(tx.total)}
-                </span>
+          {RECENT_TRANSACTIONS.map((tx) => (
+            <div
+              key={tx.id}
+              className="py-3 flex items-center gap-4"
+            >
+              <div className="shrink-0">
+                <p className="text-sm font-semibold text-ds-on-surface">
+                  {tx.customer}
+                </p>
+                <p className="text-xs mt-0.5 text-ds-on-surface-variant">
+                  {tx.id} · {tx.items} item · {tx.time}
+                </p>
               </div>
-            )
-          })}
+              <div className="flex-1" />
+              <Badge className={cn('rounded-full font-medium shrink-0', PAYMENT_CLASSES[tx.paymentMethod])}>
+                {PAYMENT_LABELS[tx.paymentMethod]}
+              </Badge>
+              <span className="text-sm font-bold shrink-0 w-24 text-right text-ds-on-surface">
+                {fmt(tx.total)}
+              </span>
+            </div>
+          ))}
         </div>
       </CardContent>
     </Card>

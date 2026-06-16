@@ -1,6 +1,16 @@
 import type { ReactNode } from 'react'
 import DashboardSidebar from '@/pages/dashboard/components/dashboard-sidebar'
 import Icon from '@/components/icons'
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
 
 type Props = {
   children: ReactNode
@@ -11,35 +21,15 @@ type Props = {
 export default function DashboardLayout({ children, title, subtitle }: Props) {
   return (
     <div className="h-screen w-screen flex overflow-hidden font-sans" style={{ background: 'var(--ds-surface)' }}>
-      {/* Global design tokens for dashboard from Stitch */}
-      <style>{`
-        .glass-panel {
-          background: rgba(255, 255, 255, 0.6);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .ambient-shadow {
-          box-shadow: 0 10px 40px -10px rgba(21, 30, 20, 0.05);
-        }
-
-        .chart-grid {
-          background-size: 40px 40px;
-          background-image: linear-gradient(to right, rgba(108, 123, 105, 0.05) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(108, 123, 105, 0.05) 1px, transparent 1px);
-        }
-      `}</style>
-
       {/* Sidebar Navigation */}
       <DashboardSidebar />
 
       {/* Main Content Area Wrapper */}
-      <div className="flex-1 flex flex-col min-h-screen relative overflow-x-hidden">
+      <div className="flex-1 flex flex-col relative overflow-x-hidden">
         
         {/* Top Navigation Bar */}
         <header
-          className="flex justify-between items-center px-8 w-full z-40 shadow-sm h-16 sticky top-0 shrink-0"
+          className="flex justify-between items-center px-8 w-full z-40 shadow-sm h-14 sticky top-0 shrink-0"
           style={{
             background: 'var(--ds-surface-lowest)',
             borderColor: 'var(--ds-outline-variant)',
@@ -47,14 +37,14 @@ export default function DashboardLayout({ children, title, subtitle }: Props) {
           }}
         >
           {/* Search Input */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center">
             <div
-              className="relative rounded-lg flex items-center px-6 py-3 w-96 focus-within:ring-1 focus-within:ring-ds-primary/20 transition-all"
+              className="relative rounded-lg flex items-center px-4 py-2 w-72 focus-within:ring-1 focus-within:ring-ds-outline-variant transition-all"
               style={{ background: 'var(--ds-surface-low)' }}
             >
-              <Icon name="search" className="w-5 h-5 mr-3" style={{ color: 'var(--ds-on-surface-variant)' }} />
+              <Icon name="search" className="w-4 h-4 mr-2" style={{ color: 'var(--ds-on-surface-variant)' }} />
               <input
-                className="bg-transparent border-none outline-none text-base w-full placeholder:text-ds-on-surface-variant/50 focus:ring-0 p-0"
+                className="bg-transparent border-none outline-none text-sm w-full placeholder:text-ds-on-surface-variant/50 focus:ring-0 p-0"
                 style={{ color: 'var(--ds-on-surface)' }}
                 placeholder="Search..."
                 type="text"
@@ -63,7 +53,7 @@ export default function DashboardLayout({ children, title, subtitle }: Props) {
           </div>
 
           {/* Quick Actions & Profile */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <button
               className="w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer active:scale-95 hover:bg-[var(--ds-surface-low)]"
               style={{ color: 'var(--ds-on-surface-variant)' }}
@@ -71,32 +61,56 @@ export default function DashboardLayout({ children, title, subtitle }: Props) {
             >
               <Icon name="bell" className="w-5 h-5" />
             </button>
-            
-            <button
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer active:scale-95 hover:bg-[var(--ds-surface-low)]"
-              style={{ color: 'var(--ds-on-surface-variant)' }}
-              aria-label="Help"
-            >
-              <Icon name="help-circle" className="w-5 h-5" />
-            </button>
-            
-            <button
-              className="text-sm font-bold px-4 py-2 rounded-full transition-colors hover:bg-[var(--ds-surface-low)] cursor-pointer"
-              style={{ color: 'var(--ds-primary)' }}
-            >
-              Support
-            </button>
-            
-            <div
-              className="w-10 h-10 rounded-full overflow-hidden border cursor-pointer active:scale-95 transition-transform ml-2"
-              style={{ borderColor: 'var(--ds-outline-variant)' }}
-            >
-              <img
-                alt="User profile"
-                className="w-full h-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB1B3Wa1C1srUHOvtgMLEf1TikZQcbh8edUv3m7dFidzKjNS9gMj06XQWavpnvVrq1RfdQNvE8R435xEM0skuMAvftwwJCyMEBDSoNQHPMGIQETa1CMyCR-PrPp1Set4ArH49W9lO1wWCjWSt5xfpGbf2T-RYrfaoGYTRgL62o4lWEH35Tc6c1MiZ-UJ0uRyPrCEzDhvDqHhyswgoK31tc9gYHmIJei23FTFsyt7sC93qLAkEG-B0VjYSY5Z3OH1H7LmhIviKD3OLP"
-              />
-            </div>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-[var(--ds-surface-low)] transition-colors cursor-pointer active:scale-95">
+                  <Avatar className="size-8">
+                    <AvatarImage
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB1B3Wa1C1srUHOvtgMLEf1TikZQcbh8edUv3m7dFidzKjNS9gMj06XQWavpnvVrq1RfdQNvE8R435xEM0skuMAvftwwJCyMEBDSoNQHPMGIQETa1CMyCR-PrPp1Set4ArH49W9lO1wWCjWSt5xfpGbf2T-RYrfaoGYTRgL62o4lWEH35Tc6c1MiZ-UJ0uRyPrCEzDhvDqHhyswgoK31tc9gYHmIJei23FTFsyt7sC93qLAkEG-B0VjYSY5Z3OH1H7LmhIviKD3OLP"
+                      alt="User avatar"
+                    />
+                    <AvatarFallback>AD</AvatarFallback>
+                  </Avatar>
+                  <div className="text-left hidden md:block">
+                    <p className="text-xs font-semibold leading-none" style={{ color: 'var(--ds-on-surface)' }}>
+                      Admin
+                    </p>
+                    <p className="text-xs leading-none mt-0.5" style={{ color: 'var(--ds-on-surface-variant)' }}>
+                      arvanria@gmail.com
+                    </p>
+                  </div>
+                  <Icon name="chevron-down" className="w-3.5 h-3.5 hidden md:block" style={{ color: 'var(--ds-on-surface-variant)' }} />
+                </button>
+              </DropdownMenuTrigger>
+
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm font-semibold" style={{ color: 'var(--ds-on-surface)' }}>
+                      Admin
+                    </p>
+                    <p className="text-xs" style={{ color: 'var(--ds-on-surface-variant)' }}>
+                      arvanria@gmail.com
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Icon name="user" className="w-4 h-4 mr-2" />
+                  Profile
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Icon name="settings" className="w-4 h-4 mr-2" />
+                  Settings
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem variant="destructive">
+                  <Icon name="log-out" className="w-4 h-4 mr-2" />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </header>
 
@@ -109,7 +123,7 @@ export default function DashboardLayout({ children, title, subtitle }: Props) {
               <div className="flex justify-between items-end mb-2">
                 <div>
                   <h2
-                    className="font-black text-3xl tracking-tight mb-1"
+                    className="font-bold text-2xl tracking-tight mb-1"
                     style={{ color: 'var(--ds-on-surface)' }}
                   >
                     {title}
@@ -123,15 +137,10 @@ export default function DashboardLayout({ children, title, subtitle }: Props) {
                 
                 {/* Export PDF Button */}
                 <div className="flex gap-2">
-                  <button
-                    className="px-4 py-2 rounded-full text-sm font-semibold transition-colors hover:bg-[var(--ds-surface-highest)] cursor-pointer"
-                    style={{
-                      background: 'var(--ds-surface-high)',
-                      color: 'var(--ds-on-surface)'
-                    }}
-                  >
+                  <Button variant="outline" size="sm">
+                    <Icon name="download" className="w-4 h-4 mr-2" />
                     Export PDF
-                  </button>
+                  </Button>
                 </div>
               </div>
             )}

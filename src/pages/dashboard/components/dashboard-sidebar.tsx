@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import Icon from '@/components/icons'
+import { cn } from '@/lib/utils'
 import type { MenuItem } from '@/types/menu'
 import { MENU_ITEMS } from '@/config'
 import { Button } from '@/components/ui/button'
@@ -22,25 +23,25 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
       {item.href ? (
         <Link
           to={item.href}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
-          style={{
-            marginLeft: `${level * 12}px`,
-            background: isActive ? 'var(--ds-surface-highest)' : 'transparent',
-            color: isActive ? 'var(--ds-on-surface)' : 'var(--ds-on-surface-variant)',
-          }}
+          className={cn(
+            'relative w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+            isActive
+              ? 'bg-ds-surface-highest text-ds-on-surface before:absolute before:left-0 before:top-2 before:bottom-2 before:w-0.5 before:rounded-full before:bg-ds-primary'
+              : 'text-ds-on-surface-variant hover:bg-ds-surface-mid hover:text-ds-on-surface'
+          )}
+          style={{ marginLeft: `${level * 12}px` }}
         >
-          {item.icon && <Icon name={item.icon} className="w-4 h-4 shrink-0" />}
+          {item.icon && <Icon name={item.icon} className={cn('w-4 h-4 shrink-0', isActive && 'text-ds-primary')} />}
           <span>{item.label}</span>
         </Link>
       ) : (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors justify-between"
-          style={{
-            marginLeft: `${level * 12}px`,
-            background: expanded ? 'var(--ds-surface-mid)' : 'transparent',
-            color: 'var(--ds-on-surface)',
-          }}
+          className={cn(
+            'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors justify-between',
+            expanded ? 'bg-ds-surface-mid text-ds-on-surface' : 'text-ds-on-surface hover:bg-ds-surface-mid hover:text-ds-on-surface'
+          )}
+          style={{ marginLeft: `${level * 12}px` }}
         >
           <div className="flex items-center gap-3">
             {item.icon && <Icon name={item.icon} className="w-4 h-4 shrink-0" />}
@@ -48,8 +49,7 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
           </div>
           <Icon
             name={expanded ? 'chevron-down' : 'chevron-right'}
-            className="w-4 h-4 shrink-0"
-            style={{ color: 'var(--ds-on-surface-variant)' }}
+            className="w-4 h-4 shrink-0 text-ds-on-surface-variant"
           />
         </button>
       )}
@@ -67,8 +67,6 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
 
 export default function DashboardSidebar() {
   const { pathname } = useLocation()
-  const [searchOpen, setSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
 
   return (
     <aside
@@ -89,35 +87,6 @@ export default function DashboardSidebar() {
         <span className="text-sm font-bold tracking-tight" style={{ color: 'var(--ds-on-surface)' }}>
           Precision POS
         </span>
-      </div>
-
-      {/* Search */}
-      <div className="px-3 py-3 border-b shrink-0" style={{ borderColor: 'var(--ds-outline-variant)' }}>
-        <button
-          onClick={() => setSearchOpen(!searchOpen)}
-          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors"
-          style={{
-            background: 'var(--ds-surface-mid)',
-            color: 'var(--ds-on-surface-variant)',
-          }}
-        >
-          <Icon name="search" className="w-4 h-4" />
-          <span>Search menu...</span>
-        </button>
-        {searchOpen && (
-          <input
-            type="text"
-            placeholder="Type to search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full mt-2 px-3 py-2 rounded-lg text-sm border-0 outline-none"
-            style={{
-              background: 'var(--ds-surface-highest)',
-              color: 'var(--ds-on-surface)',
-            }}
-            autoFocus
-          />
-        )}
       </div>
 
       {/* New Transaction CTA */}
