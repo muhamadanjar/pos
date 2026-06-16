@@ -1,4 +1,3 @@
-import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 import {
   FormField,
   FormItem,
@@ -24,14 +23,14 @@ export function TaxationSection({ control }: TaxationSectionProps) {
   const enableGlobalTax = useWatch({ control, name: 'enableGlobalTax' })
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-3">
+    <div className="relative bg-ds-surface-lowest rounded-xl p-6 shadow-[0_4px_20px_-4px_rgba(21,30,20,0.05)] border border-ds-surface-highest overflow-hidden">
+      <div className="absolute top-0 left-0 w-1 h-full bg-ds-primary"></div>
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 bg-ds-surface-high rounded-lg text-ds-primary">
           <Icon name="receipt-text" className="w-5 h-5" />
-          Taxation Rules
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+        </div>
+        <h3 className="text-base font-semibold text-ds-on-surface">Taxation Rules</h3>
+      </div>
         <div className="space-y-6">
           {/* Enable Global Tax */}
           <FormField
@@ -41,8 +40,8 @@ export function TaxationSection({ control }: TaxationSectionProps) {
               <FormItem>
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col gap-1">
-                    <FormLabel>Enable Global Tax</FormLabel>
-                    <FormDescription>Apply tax rules to all transactions</FormDescription>
+                    <FormLabel className="text-sm font-semibold text-ds-on-surface">Enable Global Tax</FormLabel>
+                    <FormDescription className="text-xs text-ds-on-surface-variant">Apply tax rules to all transactions</FormDescription>
                   </div>
                   <FormControl>
                     <Switch checked={field.value} onCheckedChange={field.onChange} />
@@ -60,18 +59,18 @@ export function TaxationSection({ control }: TaxationSectionProps) {
               name="taxCalculationMode"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Tax Calculation Mode</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-ds-on-surface">Tax Calculation Mode</FormLabel>
                   <FormControl>
                     <RadioGroup value={field.value} onValueChange={field.onChange} className="flex gap-4 mt-2">
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="exclusive" id="tax-exclusive" />
-                        <FormLabel htmlFor="tax-exclusive" className="!mt-0 cursor-pointer">
+                        <FormLabel htmlFor="tax-exclusive" className="!mt-0 cursor-pointer text-sm text-ds-on-surface">
                           Tax Exclusive
                         </FormLabel>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="inclusive" id="tax-inclusive" />
-                        <FormLabel htmlFor="tax-inclusive" className="!mt-0 cursor-pointer">
+                        <FormLabel htmlFor="tax-inclusive" className="!mt-0 cursor-pointer text-sm text-ds-on-surface">
                           Tax Inclusive
                         </FormLabel>
                       </div>
@@ -88,7 +87,7 @@ export function TaxationSection({ control }: TaxationSectionProps) {
               name="defaultTaxRate"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Default Tax Rate</FormLabel>
+                  <FormLabel className="text-sm font-semibold text-ds-on-surface">Default Tax Rate</FormLabel>
                   <FormControl>
                     <div className="relative w-40">
                       <Input
@@ -102,9 +101,9 @@ export function TaxationSection({ control }: TaxationSectionProps) {
                           const val = e.target.value === '' ? NaN : parseFloat(e.target.value)
                           field.onChange(val)
                         }}
-                        className="pr-8 text-right font-mono"
+                        className="pr-8 text-right font-mono bg-ds-surface-high border-none rounded-lg px-4 py-3 text-ds-on-surface focus:ring-2 focus:ring-ds-primary/20 focus:bg-ds-surface-lowest transition-all"
                       />
-                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-ds-on-surface-variant">
                         %
                       </span>
                     </div>
@@ -115,7 +114,6 @@ export function TaxationSection({ control }: TaxationSectionProps) {
             />
           </div>
         </div>
-      </CardContent>
-    </Card>
+    </div>
   )
 }
