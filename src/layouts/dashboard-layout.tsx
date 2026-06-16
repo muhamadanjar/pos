@@ -49,12 +49,12 @@ export default function DashboardLayout({ children, title, subtitle }: Props) {
           {/* Search Input */}
           <div className="flex items-center gap-4">
             <div
-              className="relative rounded-full flex items-center px-4 py-2 w-64 focus-within:ring-1 focus-within:ring-[var(--ds-primary)]/20 transition-all"
+              className="relative rounded-lg flex items-center px-6 py-3 w-96 focus-within:ring-1 focus-within:ring-ds-primary/20 transition-all"
               style={{ background: 'var(--ds-surface-low)' }}
             >
-              <Icon name="search" className="w-4 h-4 mr-2" style={{ color: 'var(--ds-on-surface-variant)' }} />
+              <Icon name="search" className="w-5 h-5 mr-3" style={{ color: 'var(--ds-on-surface-variant)' }} />
               <input
-                className="bg-transparent border-none outline-none text-sm w-full placeholder:text-[var(--ds-on-surface-variant)]/50 focus:ring-0 p-0"
+                className="bg-transparent border-none outline-none text-base w-full placeholder:text-ds-on-surface-variant/50 focus:ring-0 p-0"
                 style={{ color: 'var(--ds-on-surface)' }}
                 placeholder="Search..."
                 type="text"

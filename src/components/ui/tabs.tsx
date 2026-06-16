@@ -30,12 +30,36 @@ const tabsListVariants = cva(
         default: "bg-muted",
         line: "gap-1 bg-transparent",
       },
+      size: {
+        lg: 'gap-2.5',
+        md: 'gap-2',
+        sm: 'gap-1.5',
+        xs: 'gap-1',
+      },
+      
+
     },
     defaultVariants: {
       variant: "default",
     },
   }
 )
+
+// Variants for TabsContent
+const tabsContentVariants = cva(
+  'mt-2.5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: '',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
 
 function TabsList({
   className,
@@ -74,12 +98,13 @@ function TabsTrigger({
 
 function TabsContent({
   className,
+  variant,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.Content>) {
+}: React.ComponentProps<typeof TabsPrimitive.Content>  & VariantProps<typeof tabsContentVariants>) {
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn("flex-1 text-sm outline-none", className)}
+      className={cn(tabsContentVariants({ variant }), className)}
       {...props}
     />
   )

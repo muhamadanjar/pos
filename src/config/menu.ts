@@ -26,7 +26,7 @@ export const MENU_ITEMS: MenuItem[] = [
         label: 'Reports & Analytics',
         icon: 'bar-chart-3',
         children: [
-            { label: 'Sales Reports', href: '/reports/sales', icon: 'line-chart' },
+            { label: 'Sales Reports', href: '/reports', icon: 'line-chart' },
             { label: 'Analytics', href: '/reports/analytics', icon: 'activity' },
             { label: 'Inventory Reports', href: '/reports/inventory', icon: 'pie-chart' },
         ],

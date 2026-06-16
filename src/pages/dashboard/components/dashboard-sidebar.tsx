@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import Icon from '@/components/icons'
 import type { MenuItem } from '@/types/menu'
-import { MENU_ITEMS } from '@/config';
+import { MENU_ITEMS } from '@/config'
+import { Button } from '@/components/ui/button'
 
 
 type MenuItemProps = {
@@ -117,6 +118,16 @@ export default function DashboardSidebar() {
             autoFocus
           />
         )}
+      </div>
+
+      {/* New Transaction CTA */}
+      <div className="px-3 py-3">
+        <Link to="/pos">
+          <Button className="w-full bg-ds-primary text-ds-on-primary hover:bg-ds-primary/90 gap-2">
+            <Icon name="plus" className="w-4 h-4" />
+            New Transaction
+          </Button>
+        </Link>
       </div>
 
       {/* Navigation */}

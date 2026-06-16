@@ -1,62 +1,76 @@
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  type ChartConfig,
+} from '@/components/ui/chart'
+import Icon from '@/components/icons'
 import { DAILY_REVENUE, fmt } from '../data/mock-data'
 
-const MAX = Math.max(...DAILY_REVENUE.map((d) => d.revenue))
+const chartConfig = {
+  revenue: {
+    label: 'Revenue',
+    color: 'var(--ds-primary)',
+  },
+} satisfies ChartConfig
 
 export default function RevenueChart() {
-  const todayIdx = DAILY_REVENUE.length - 1
+  const totalRevenue = DAILY_REVENUE.reduce((s, d) => s + d.revenue, 0)
 
   return (
-    <div
-      className="rounded-2xl p-6 flex flex-col gap-6"
-      style={{
-        background: 'var(--ds-surface-lowest)',
-        boxShadow: '0 24px 48px -12px rgba(21,30,20,0.08)',
-      }}
-    >
-      <div className="flex items-end justify-between">
+    <Card>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 border-b border-ds-outline/15 pb-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--ds-on-surface-variant)' }}>
-            Pendapatan 7 Hari
-          </p>
-          <p className="mt-1 text-xl font-bold tracking-tight" style={{ color: 'var(--ds-on-surface)' }}>
-            {fmt(DAILY_REVENUE.reduce((s, d) => s + d.revenue, 0))}
+          <CardTitle className="text-lg font-semibold text-ds-on-surface">
+            7-Day Revenue
+          </CardTitle>
+          <p className="mt-2 text-2xl font-bold text-ds-on-surface">
+            {fmt(totalRevenue)}
           </p>
         </div>
-        <div
-          className="px-3 py-1 rounded-full text-xs font-semibold"
-          style={{ background: 'var(--ds-surface-low)', color: 'var(--ds-secondary)' }}
-        >
-          Minggu Ini
+        <div className="flex items-center gap-2 px-3 py-1 rounded-lg bg-ds-surface-mid">
+          <Icon name="trending-up" className="w-4 h-4 text-ds-secondary" />
+          <span className="text-xs font-semibold text-ds-secondary">This Week</span>
         </div>
-      </div>
-
-      <div className="flex items-end gap-2 h-32">
-        {DAILY_REVENUE.map((d, i) => {
-          const pct = (d.revenue / MAX) * 100
-          const isToday = i === todayIdx
-          return (
-            <div key={d.day} className="flex-1 flex flex-col items-center gap-2">
-              <div className="w-full flex items-end" style={{ height: '80px' }}>
-                <div
-                  className="w-full rounded-t-lg transition-all duration-500"
-                  style={{
-                    height: `${pct}%`,
-                    background: isToday
-                      ? 'linear-gradient(180deg, var(--ds-primary) 0%, var(--ds-on-primary-container) 100%)'
-                      : 'var(--ds-surface-highest)',
-                  }}
+      </CardHeader>
+      <CardContent className="pt-6">
+        <ChartContainer config={chartConfig} className="h-[280px] w-full [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-ds-primary-container">
+          <BarChart data={DAILY_REVENUE}>
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="var(--ds-outline-variant)"
+              vertical={false}
+            />
+            <XAxis
+              dataKey="day"
+              stroke="var(--ds-on-surface-variant)"
+              style={{ fontSize: '12px' }}
+            />
+            <YAxis
+              stroke="var(--ds-on-surface-variant)"
+              style={{ fontSize: '12px' }}
+              tickFormatter={(value: number) =>
+                new Intl.NumberFormat('id-ID', { notation: 'compact' }).format(value)
+              }
+            />
+            <ChartTooltip
+              content={
+                <ChartTooltipContent
+                  className="bg-ds-surface-highest border-ds-outline/15"
                 />
-              </div>
-              <span
-                className="text-[10px] font-medium"
-                style={{ color: isToday ? 'var(--ds-primary)' : 'var(--ds-on-surface-variant)' }}
-              >
-                {d.day}
-              </span>
-            </div>
-          )
-        })}
-      </div>
-    </div>
+              }
+            />
+            <Bar
+              dataKey="revenue"
+              fill="var(--ds-primary)"
+              radius={[8, 8, 0, 0]}
+              name="Revenue"
+            />
+          </BarChart>
+        </ChartContainer>
+      </CardContent>
+    </Card>
   )
 }

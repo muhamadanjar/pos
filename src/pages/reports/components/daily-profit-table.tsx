@@ -23,7 +23,7 @@ const statusConfig = {
 
 export function DailyProfitTable() {
   return (
-    <Card className="col-span-1 lg:col-span-3 border-ds-outline/15 bg-ds-surface">
+    <Card className="col-span-1 lg:col-span-3">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 border-b border-ds-outline/15 pb-4">
         <CardTitle className="text-lg font-semibold text-ds-on-surface">
           Daily Profit Report
