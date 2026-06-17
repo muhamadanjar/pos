@@ -54,11 +54,11 @@ function RadioGroup({
 // Define variants for the RadioGroupItem using cva.
 const radioItemVariants = cva(
   `
-    peer aspect-square rounded-full border outline-hidden ring-offset-background focus:outline-none focus-visible:ring-2 
-    focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50
-    aria-invalid:border-destructive/60 aria-invalid:ring-destructive/10 dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/20
-    [[data-invalid=true]_&]:border-destructive/60 [[data-invalid=true]_&]:ring-destructive/10  dark:[[data-invalid=true]_&]:border-destructive dark:[[data-invalid=true]_&]:ring-destructive/20
-    border-input text-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground  
+    peer aspect-square rounded-full border outline-hidden ring-offset-ds-surface-lowest focus:outline-none focus-visible:ring-2
+    focus-visible:ring-ds-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50
+    aria-invalid:border-ds-error/60 aria-invalid:ring-ds-error/10 dark:aria-invalid:border-ds-error dark:aria-invalid:ring-ds-error/20
+    [[data-invalid=true]_&]:border-ds-error/60 [[data-invalid=true]_&]:ring-ds-error/10 dark:[[data-invalid=true]_&]:border-ds-error dark:[[data-invalid=true]_&]:ring-ds-error/20
+    border-ds-outline-variant text-ds-primary data-[state=checked]:bg-ds-primary data-[state=checked]:border-ds-primary data-[state=checked]:text-ds-on-primary
   `,
   {
     variants: {

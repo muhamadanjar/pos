@@ -128,7 +128,7 @@ export default function InventoryDashboard() {
             <div className="flex justify-between items-start">
               <div
                 className="p-2 rounded-xl"
-                style={{ background: 'rgba(255, 186, 154, 0.4)', color: 'var(--ds-tertiary)' }}
+                style={{ background: 'var(--ds-error-container)', color: 'var(--ds-error)' }}
               >
                 <TrendingDown className="w-6 h-6" />
               </div>
@@ -289,13 +289,13 @@ export default function InventoryDashboard() {
                             item.status === 'In Stock'
                               ? 'var(--ds-secondary-container)'
                               : item.status === 'Low Stock'
-                              ? 'rgba(255, 186, 154, 0.4)'
+                              ? 'var(--ds-error-container)'
                               : 'var(--ds-error-container)',
                           color:
                             item.status === 'In Stock'
                               ? 'var(--ds-on-secondary-container)'
                               : item.status === 'Low Stock'
-                              ? 'var(--ds-tertiary)'
+                              ? 'var(--ds-error)'
                               : 'var(--ds-error)',
                         }}
                       >

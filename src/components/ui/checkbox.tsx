@@ -9,11 +9,11 @@ import { Checkbox as CheckboxPrimitive } from 'radix-ui';
 // Define the variants for the Checkbox using cva.
 const checkboxVariants = cva(
   `
-    group peer bg-background shrink-0 rounded-md border border-input ring-offset-background focus-visible:outline-noneba
-    focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 
-    aria-invalid:border-destructive/60 aria-invalid:ring-destructive/10 dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/20
-    [[data-invalid=true]_&]:border-destructive/60 [[data-invalid=true]_&]:ring-destructive/10  dark:[[data-invalid=true]_&]:border-destructive dark:[[data-invalid=true]_&]:ring-destructive/20,
-    data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-foreground data-[state=indeterminate]:bg-primary data-[state=indeterminate]:border-primary data-[state=indeterminate]:text-primary-foreground
+    group peer bg-ds-surface-container-lowest shrink-0 rounded-md border border-ds-outline-variant ring-offset-ds-surface-lowest focus-visible:outline-none
+    focus-visible:ring-2 focus-visible:ring-ds-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50
+    aria-invalid:border-ds-error/60 aria-invalid:ring-ds-error/10 dark:aria-invalid:border-ds-error dark:aria-invalid:ring-ds-error/20
+    [[data-invalid=true]_&]:border-ds-error/60 [[data-invalid=true]_&]:ring-ds-error/10 dark:[[data-invalid=true]_&]:border-ds-error dark:[[data-invalid=true]_&]:ring-ds-error/20,
+    data-[state=checked]:bg-ds-primary data-[state=checked]:border-ds-primary data-[state=checked]:text-ds-on-primary data-[state=indeterminate]:bg-ds-primary data-[state=indeterminate]:border-ds-primary data-[state=indeterminate]:text-ds-on-primary
     `,
   {
     variants: {

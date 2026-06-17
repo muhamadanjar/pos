@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Button } from '@/components/ui/button'
 import Icon from '@/components/icons'
 import type { Control } from 'react-hook-form'
 import type { LocalizationFormValues } from '@/pages/settings/schemas/localization-schema'
@@ -154,20 +155,22 @@ export function RegionalSection({ control }: RegionalSectionProps) {
                 <FormLabel className="text-sm font-semibold text-ds-on-surface-variant">Time Format</FormLabel>
                 <FormControl>
                   <div className="flex rounded-lg border border-ds-surface-highest overflow-hidden bg-ds-surface-high">
-                    <button
+                    <Button
                       type="button"
-                      className={`flex-1 rounded-none transition-colors px-3 py-2 text-sm font-medium ${field.value === '12h' ? 'bg-ds-primary text-ds-on-primary' : 'bg-transparent text-ds-on-surface hover:bg-ds-surface-mid'}`}
+                      variant={field.value === '12h' ? 'default' : 'ghost'}
+                      className="flex-1 rounded-none"
                       onClick={() => field.onChange('12h')}
                     >
                       12-hour (AM/PM)
-                    </button>
-                    <button
+                    </Button>
+                    <Button
                       type="button"
-                      className={`flex-1 rounded-none border-l border-ds-surface-highest transition-colors px-3 py-2 text-sm font-medium ${field.value === '24h' ? 'bg-ds-primary text-ds-on-primary' : 'bg-transparent text-ds-on-surface hover:bg-ds-surface-mid'}`}
+                      variant={field.value === '24h' ? 'default' : 'ghost'}
+                      className="flex-1 rounded-none border-l border-ds-surface-highest"
                       onClick={() => field.onChange('24h')}
                     >
                       24-hour
-                    </button>
+                    </Button>
                   </div>
                 </FormControl>
                 <FormMessage />

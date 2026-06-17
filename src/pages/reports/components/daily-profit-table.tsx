@@ -15,8 +15,8 @@ const statusConfig = {
   strong: { bg: "bg-ds-primary/10", text: "text-ds-primary", label: "Strong" },
   stable: { bg: "bg-ds-secondary/10", text: "text-ds-secondary", label: "Stable" },
   "high-cost": {
-    bg: "bg-ds-tertiary/10",
-    text: "text-ds-tertiary",
+    bg: "bg-ds-error/10",
+    text: "text-ds-error",
     label: "High Cost",
   },
 }

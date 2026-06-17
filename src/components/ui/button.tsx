@@ -5,21 +5,21 @@ import { Slot as SlotPrimitive } from 'radix-ui';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'cursor-pointer group whitespace-nowrap focus-visible:outline-hidden inline-flex items-center justify-center has-data-[arrow=true]:justify-between whitespace-nowrap text-sm font-medium ring-offset-background transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-60 [&_svg]:shrink-0',
+  'cursor-pointer group whitespace-nowrap focus-visible:outline-hidden inline-flex items-center justify-center has-data-[arrow=true]:justify-between whitespace-nowrap text-sm font-medium ring-offset-ds-surface-container-lowest transition-[color,box-shadow] disabled:pointer-events-none disabled:opacity-60 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-primary-foreground hover:bg-primary/90 data-[state=open]:bg-primary/90',
+        primary: 'bg-ds-primary text-ds-on-primary hover:bg-ds-primary/90 data-[state=open]:bg-ds-primary/90 focus-visible:ring-ds-primary',
         mono: 'bg-zinc-950 text-white dark:bg-zinc-300 dark:text-black hover:bg-zinc-950/90 dark:hover:bg-zinc-300/90 data-[state=open]:bg-zinc-950/90 dark:data-[state=open]:bg-zinc-300/90',
         destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90 data-[state=open]:bg-destructive/90',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/90 data-[state=open]:bg-secondary/90',
-        outline: 'bg-background text-accent-foreground border border-input hover:bg-accent data-[state=open]:bg-accent',
+          'bg-ds-error text-ds-on-error hover:bg-ds-error/90 data-[state=open]:bg-ds-error/90 focus-visible:ring-ds-error',
+        secondary: 'bg-ds-surface-container-highest text-ds-on-surface hover:bg-ds-surface-high data-[state=open]:bg-ds-surface-high focus-visible:ring-ds-primary',
+        outline: 'bg-ds-surface-container-lowest text-ds-on-surface border border-ds-outline-variant hover:bg-ds-surface-low data-[state=open]:bg-ds-surface-low focus-visible:ring-ds-primary',
         dashed:
-          'text-accent-foreground border border-input border-dashed bg-background hover:bg-accent hover:text-accent-foreground data-[state=open]:text-accent-foreground',
+          'text-ds-on-surface border border-ds-outline-variant border-dashed bg-ds-surface-container-lowest hover:bg-ds-surface-low hover:text-ds-on-surface data-[state=open]:text-ds-on-surface',
         ghost:
-          'text-accent-foreground hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground',
-        dim: 'text-muted-foreground hover:text-foreground data-[state=open]:text-foreground',
+          'text-ds-on-surface hover:bg-ds-surface-mid hover:text-ds-on-surface data-[state=open]:bg-ds-surface-mid data-[state=open]:text-ds-on-surface',
+        dim: 'text-ds-on-surface-variant hover:text-ds-on-surface data-[state=open]:text-ds-on-surface',
         foreground: '',
         inverse: '',
       },
@@ -50,20 +50,20 @@ const buttonVariants = cva(
         circle: 'rounded-full',
       },
       mode: {
-        default: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-        icon: 'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 shrink-0',
-        link: 'text-primary h-auto p-0 bg-transparent rounded-none hover:bg-transparent data-[state=open]:bg-transparent',
+        default: 'focus-visible:ring-2 focus-visible:ring-ds-primary focus-visible:ring-offset-2',
+        icon: 'focus-visible:ring-2 focus-visible:ring-ds-primary focus-visible:ring-offset-2 shrink-0',
+        link: 'text-ds-primary h-auto p-0 bg-transparent rounded-none hover:bg-transparent data-[state=open]:bg-transparent',
         input: `
-            justify-start font-normal hover:bg-background [&_svg]:transition-colors [&_svg]:hover:text-foreground data-[state=open]:bg-background 
-            focus-visible:border-ring focus-visible:outline-hidden focus-visible:ring-[3px] focus-visible:ring-ring/30 
-            [[data-state=open]>&]:border-ring [[data-state=open]>&]:outline-hidden [[data-state=open]>&]:ring-[3px] 
-            [[data-state=open]>&]:ring-ring/30 
-            aria-invalid:border-destructive/60 aria-invalid:ring-destructive/10 dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/20
-            in-data-[invalid=true]:border-destructive/60 in-data-[invalid=true]:ring-destructive/10  dark:in-data-[invalid=true]:border-destructive dark:in-data-[invalid=true]:ring-destructive/20
+            justify-start font-normal hover:bg-ds-surface-low [&_svg]:transition-colors [&_svg]:hover:text-ds-on-surface data-[state=open]:bg-ds-surface-low
+            focus-visible:border-ds-primary focus-visible:outline-hidden focus-visible:ring-[3px] focus-visible:ring-ds-primary/30
+            [[data-state=open]>&]:border-ds-primary [[data-state=open]>&]:outline-hidden [[data-state=open]>&]:ring-[3px]
+            [[data-state=open]>&]:ring-ds-primary/30
+            aria-invalid:border-ds-error/60 aria-invalid:ring-ds-error/10 dark:aria-invalid:border-ds-error dark:aria-invalid:ring-ds-error/20
+            in-data-[invalid=true]:border-ds-error/60 in-data-[invalid=true]:ring-ds-error/10  dark:in-data-[invalid=true]:border-ds-error dark:in-data-[invalid=true]:ring-ds-error/20
           `,
       },
       placeholder: {
-        true: 'text-muted-foreground',
+        true: 'text-ds-on-surface-variant',
         false: '',
       },
     },
@@ -287,17 +287,17 @@ const buttonVariants = cva(
       {
         variant: 'primary',
         appearance: 'ghost',
-        className: 'bg-transparent text-primary/90 hover:bg-primary/5 data-[state=open]:bg-primary/5',
+        className: 'bg-transparent text-ds-primary/90 hover:bg-ds-primary/5 data-[state=open]:bg-ds-primary/5',
       },
       {
         variant: 'destructive',
         appearance: 'ghost',
-        className: 'bg-transparent text-destructive/90 hover:bg-destructive/5 data-[state=open]:bg-destructive/5',
+        className: 'bg-transparent text-ds-error/90 hover:bg-ds-error/5 data-[state=open]:bg-ds-error/5',
       },
       {
         variant: 'ghost',
         mode: 'icon',
-        className: 'text-muted-foreground',
+        className: 'text-ds-on-surface-variant',
       },
 
       // Size
@@ -326,7 +326,7 @@ const buttonVariants = cva(
         mode: 'input',
         placeholder: true,
         variant: 'outline',
-        className: 'font-normal text-muted-foreground',
+        className: 'font-normal text-ds-on-surface-variant',
       },
       {
         mode: 'input',

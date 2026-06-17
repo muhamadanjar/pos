@@ -229,7 +229,7 @@ function DataGridTableBodyRowSkeletonCell<TData>({ children, column }: { childre
         column.columnDef.meta?.cellClassName,
         props.tableLayout?.columnsPinnable &&
           column.getCanPin() &&
-          '[&[data-pinned=left][data-last-col=left]]:border-e! [&[data-pinned=right][data-last-col=right]]:border-s! [&[data-pinned][data-last-col]]:border-border data-pinned:bg-background/90 data-pinned:backdrop-blur-xs"',
+          '[&[data-pinned=left][data-last-col=left]]:border-e! [&[data-pinned=right][data-last-col=right]]:border-s! [&[data-pinned][data-last-col]]:border-border data-pinned:bg-ds-surface-container-lowest/90 data-pinned:backdrop-blur-xs"',
         column.getIndex() === 0 || column.getIndex() === table.getVisibleFlatColumns().length - 1
           ? props.tableClassNames?.edgeCell
           : '',
@@ -331,7 +331,7 @@ function DataGridTableBodyRowCell<TData>({
         cell.column.columnDef.meta?.cellClassName,
         props.tableLayout?.columnsPinnable &&
           column.getCanPin() &&
-          '[&[data-pinned=left][data-last-col=left]]:border-e! [&[data-pinned=right][data-last-col=right]]:border-s! [&[data-pinned][data-last-col]]:border-border data-pinned:bg-background/90 data-pinned:backdrop-blur-xs"',
+          '[&[data-pinned=left][data-last-col=left]]:border-e! [&[data-pinned=right][data-last-col=right]]:border-s! [&[data-pinned][data-last-col]]:border-border data-pinned:bg-ds-surface-container-lowest/90 data-pinned:backdrop-blur-xs"',
         column.getIndex() === 0 || column.getIndex() === row.getVisibleCells().length - 1
           ? props.tableClassNames?.edgeCell
           : '',
@@ -348,7 +348,7 @@ function DataGridTableEmpty() {
 
   return (
     <tr>
-      <td colSpan={totalColumns} className="text-center text-muted-foreground py-6">
+      <td colSpan={totalColumns} className="text-center text-ds-on-surface-variant py-6">
         {props.emptyMessage || 'No data available'}
       </td>
     </tr>
@@ -360,9 +360,9 @@ function DataGridTableLoader() {
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <div className="text-muted-foreground bg-card  flex items-center gap-2 px-4 py-2 font-medium leading-none text-sm border shadow-xs rounded-md">
+      <div className="text-ds-on-surface-variant bg-card  flex items-center gap-2 px-4 py-2 font-medium leading-none text-sm border shadow-xs rounded-md">
         <svg
-          className="animate-spin -ml-1 h-5 w-5 text-muted-foreground"
+          className="animate-spin -ml-1 h-5 w-5 text-ds-on-surface-variant"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

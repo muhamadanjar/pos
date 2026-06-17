@@ -35,11 +35,12 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
           <span>{item.label}</span>
         </Link>
       ) : (
-        <button
+        <Button
+          variant="ghost"
           onClick={() => setExpanded(!expanded)}
           className={cn(
-            'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors justify-between',
-            expanded ? 'bg-ds-surface-mid text-ds-on-surface' : 'text-ds-on-surface hover:bg-ds-surface-mid hover:text-ds-on-surface'
+            'w-full justify-between',
+            expanded && 'bg-ds-surface-mid'
           )}
           style={{ marginLeft: `${level * 12}px` }}
         >
@@ -51,7 +52,7 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
             name={expanded ? 'chevron-down' : 'chevron-right'}
             className="w-4 h-4 shrink-0 text-ds-on-surface-variant"
           />
-        </button>
+        </Button>
       )}
 
       {hasChildren && expanded && (
@@ -108,16 +109,10 @@ export default function DashboardSidebar() {
 
       {/* Footer */}
       <div className="border-t px-3 py-4 shrink-0" style={{ borderColor: 'var(--ds-outline-variant)' }}>
-        <button
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
-          style={{
-            background: 'transparent',
-            color: 'var(--ds-on-surface-variant)',
-          }}
-        >
+        <Button variant="ghost" className="w-full justify-start gap-3">
           <Icon name="log-out" className="w-4 h-4" />
           <span>Logout</span>
-        </button>
+        </Button>
       </div>
     </aside>
   )

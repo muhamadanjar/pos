@@ -49,7 +49,7 @@ const alertVariants = cva('flex items-stretch w-full gap-2 group-[.toaster]:w-(-
     {
       variant: 'destructive',
       appearance: 'solid',
-      className: 'bg-destructive text-destructive-foreground',
+      className: 'bg-ds-error text-ds-error-foreground',
     },
     {
       variant: 'success',
@@ -79,40 +79,40 @@ const alertVariants = cva('flex items-stretch w-full gap-2 group-[.toaster]:w-(-
     {
       variant: 'secondary',
       appearance: 'outline',
-      className: 'border border-border bg-background text-foreground [&_[data-slot=alert-close]]:text-foreground',
+      className: 'border border-border bg-ds-surface-container-lowest text-foreground [&_[data-slot=alert-close]]:text-foreground',
     },
     {
       variant: 'primary',
       appearance: 'outline',
-      className: 'border border-border bg-background text-primary [&_[data-slot=alert-close]]:text-foreground',
+      className: 'border border-border bg-ds-surface-container-lowest text-primary [&_[data-slot=alert-close]]:text-foreground',
     },
     {
       variant: 'destructive',
       appearance: 'outline',
-      className: 'border border-border bg-background text-destructive [&_[data-slot=alert-close]]:text-foreground',
+      className: 'border border-border bg-ds-surface-container-lowest text-ds-error [&_[data-slot=alert-close]]:text-foreground',
     },
     {
       variant: 'success',
       appearance: 'outline',
       className:
-        'border border-border bg-background text-[var(--color-success,var(--color-green-500))] [&_[data-slot=alert-close]]:text-foreground',
+        'border border-border bg-ds-surface-container-lowest text-[var(--color-success,var(--color-green-500))] [&_[data-slot=alert-close]]:text-foreground',
     },
     {
       variant: 'info',
       appearance: 'outline',
       className:
-        'border border-border bg-background text-[var(--color-info,var(--color-violet-600))] [&_[data-slot=alert-close]]:text-foreground',
+        'border border-border bg-ds-surface-container-lowest text-[var(--color-info,var(--color-violet-600))] [&_[data-slot=alert-close]]:text-foreground',
     },
     {
       variant: 'warning',
       appearance: 'outline',
       className:
-        'border border-border bg-background text-[var(--color-warning,var(--color-yellow-500))] [&_[data-slot=alert-close]]:text-foreground',
+        'border border-border bg-ds-surface-container-lowest text-[var(--color-warning,var(--color-yellow-500))] [&_[data-slot=alert-close]]:text-foreground',
     },
     {
       variant: 'mono',
       appearance: 'outline',
-      className: 'border border-border bg-background text-foreground [&_[data-slot=alert-close]]:text-foreground',
+      className: 'border border-border bg-ds-surface-container-lowest text-foreground [&_[data-slot=alert-close]]:text-foreground',
     },
 
     /* Light */
@@ -131,7 +131,7 @@ const alertVariants = cva('flex items-stretch w-full gap-2 group-[.toaster]:w-(-
       variant: 'destructive',
       appearance: 'light',
       className:
-        'bg-[var(--color-destructive-soft,var(--color-red-50))] border border-[var(--color-destructive-alpha,var(--color-red-100))] text-foreground [&_[data-slot=alert-icon]]:text-destructive dark:bg-[var(--color-destructive-soft,var(--color-red-950))] dark:border-[var(--color-destructive-alpha,var(--color-red-900))] ',
+        'bg-[var(--color-destructive-soft,var(--color-red-50))] border border-[var(--color-destructive-alpha,var(--color-red-100))] text-foreground [&_[data-slot=alert-icon]]:text-ds-error dark:bg-[var(--color-destructive-soft,var(--color-red-950))] dark:border-[var(--color-destructive-alpha,var(--color-red-900))] ',
     },
     {
       variant: 'success',
@@ -171,7 +171,7 @@ const alertVariants = cva('flex items-stretch w-full gap-2 group-[.toaster]:w-(-
     {
       variant: 'mono',
       icon: 'destructive',
-      className: '[&_[data-slot=alert-icon]]:text-destructive',
+      className: '[&_[data-slot=alert-icon]]:text-ds-error',
     },
     {
       variant: 'mono',

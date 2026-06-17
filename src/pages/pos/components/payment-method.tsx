@@ -1,5 +1,5 @@
 import { Banknote, CreditCard, QrCode } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 import { useCartStore, type PaymentMethod as PM } from '../store/use-cart-store'
 
 const METHODS: { id: PM; label: string; Icon: React.ComponentType<{ className?: string }> }[] = [
@@ -18,20 +18,15 @@ function PaymentMethod() {
       </p>
       <div className="grid grid-cols-3 gap-2">
         {METHODS.map(({ id, label, Icon }) => (
-          <button
+          <Button
             key={id}
-            type="button"
+            variant={paymentMethod === id ? 'default' : 'outline'}
+            className="flex flex-col items-center gap-1.5 h-auto py-2.5 px-2"
             onClick={() => setPaymentMethod(id)}
-            className={cn(
-              'flex flex-col items-center gap-1.5 rounded-lg border p-2.5 text-xs font-medium transition-all',
-              paymentMethod === id
-                ? 'border-primary bg-primary/10 text-primary'
-                : 'border-border hover:bg-muted text-muted-foreground',
-            )}
           >
             <Icon className="size-4" />
-            {label}
-          </button>
+            <span className="text-xs">{label}</span>
+          </Button>
         ))}
       </div>
     </div>

@@ -26,7 +26,7 @@ const CommandDialog = ({ children, className, ...props }: CommandDialogProps) =>
     <Dialog {...props}>
       <DialogContent className={cn('overflow-hidden p-0 shadow-lg', className)}>
         <DialogTitle className="hidden" />
-        <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
+        <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-ds-on-surface-variant [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
           {children}
         </Command>
       </DialogContent>
@@ -40,7 +40,7 @@ function CommandInput({ className, ...props }: React.ComponentProps<typeof Comma
       <Search className="me-2 h-4 w-4 shrink-0 opacity-50" />
       <CommandPrimitive.Input
         className={cn(
-          'flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-hidden text-foreground placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50',
+          'flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-hidden text-foreground placeholder:text-ds-on-surface-variant disabled:cursor-not-allowed disabled:opacity-50',
           className,
         )}
         {...props}
@@ -68,7 +68,7 @@ function CommandGroup({ className, ...props }: React.ComponentProps<typeof Comma
     <CommandPrimitive.Group
       data-slot="command-group"
       className={cn(
-        'overflow-hidden p-1.5 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground',
+        'overflow-hidden p-1.5 text-foreground [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-ds-on-surface-variant',
         className,
       )}
       {...props}
@@ -103,7 +103,7 @@ const CommandShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanE
   return (
     <span
       data-slot="command-shortcut"
-      className={cn('ms-auto text-xs tracking-widest text-muted-foreground', className)}
+      className={cn('ms-auto text-xs tracking-widest text-ds-on-surface-variant', className)}
       {...props}
     />
   );

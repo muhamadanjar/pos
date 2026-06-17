@@ -1,5 +1,4 @@
-import {} from "@tanstack/react-query"
-import { getCoreRowModel, useReactTable, flexRender, getPaginationRowModel, type ColumnDef } from  "@tanstack/react-table"
+import { getCoreRowModel, useReactTable, flexRender, getPaginationRowModel, type ColumnDef } from "@tanstack/react-table"
 import { useMemo, useState } from "react"
 import type { Product } from "../store/product";
 import useProductStore from "../store/product"

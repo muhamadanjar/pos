@@ -8,10 +8,10 @@ export const incomeExpensesData = [
 ]
 
 export const expenseBreakdownData = [
-  { name: "Staff Payroll", value: 45, fill: "#006e21" },
-  { name: "Rent & Utilities", value: 30, fill: "#865138" },
-  { name: "Inventory", value: 15, fill: "#42e35d" },
-  { name: "Other", value: 10, fill: "#bbcbb6" },
+  { name: "Staff Payroll", value: 45, fill: "#000000" },
+  { name: "Rent & Utilities", value: 30, fill: "#ba1a1a" },
+  { name: "Inventory", value: 15, fill: "#4e635d" },
+  { name: "Other", value: 10, fill: "#c1c8c4" },
 ]
 
 export const dailyProfitData = [

@@ -18,19 +18,19 @@ export interface BadgeButtonProps
 export type BadgeDotProps = React.HTMLAttributes<HTMLSpanElement>;
 
 const badgeVariants = cva(
-  'inline-flex items-center justify-center border border-transparent font-medium focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 [&_svg]:-ms-px [&_svg]:shrink-0',
+  'inline-flex items-center justify-center border border-transparent font-medium focus:outline-hidden focus:ring-2 focus:ring-ds-primary focus:ring-offset-2 [&_svg]:-ms-px [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-primary-foreground',
-        secondary: 'bg-secondary text-secondary-foreground',
+        primary: 'bg-ds-primary text-ds-on-primary',
+        secondary: 'bg-ds-secondary text-ds-on-secondary',
         success:
-          'bg-[var(--color-success-accent,var(--color-green-500))] text-[var(--color-success-foreground,var(--color-white))]',
+          'bg-ds-secondary-container text-ds-secondary',
         warning:
-          'bg-[var(--color-warning-accent,var(--color-yellow-500))] text-[var(--color-warning-foreground,var(--color-white))]',
-        info: 'bg-[var(--color-info-accent,var(--color-violet-500))] text-[var(--color-info-foreground,var(--color-white))]',
-        outline: 'bg-transparent border border-border text-secondary-foreground',
-        destructive: 'bg-destructive text-destructive-foreground',
+          'bg-ds-tertiary-container text-ds-tertiary',
+        info: 'bg-ds-primary-container text-ds-primary',
+        outline: 'bg-transparent border border-ds-outline-variant text-ds-on-surface',
+        destructive: 'bg-ds-error text-ds-on-error',
       },
       appearance: {
         default: '',
@@ -63,7 +63,7 @@ const badgeVariants = cva(
       {
         variant: 'secondary',
         appearance: 'light',
-        className: 'bg-secondary dark:bg-secondary/50 text-secondary-foreground',
+        className: 'bg-ds-secondary-container dark:bg-ds-secondary-container/50 text-ds-secondary',
       },
       {
         variant: 'success',
@@ -124,32 +124,32 @@ const badgeVariants = cva(
       {
         variant: 'primary',
         appearance: 'ghost',
-        className: 'text-primary',
+        className: 'text-ds-primary',
       },
       {
         variant: 'secondary',
         appearance: 'ghost',
-        className: 'text-secondary-foreground',
+        className: 'text-ds-secondary',
       },
       {
         variant: 'success',
         appearance: 'ghost',
-        className: 'text-[var(--color-success-accent,var(--color-green-500))]',
+        className: 'text-ds-secondary',
       },
       {
         variant: 'warning',
         appearance: 'ghost',
-        className: 'text-[var(--color-warning-accent,var(--color-yellow-500))]',
+        className: 'text-ds-tertiary',
       },
       {
         variant: 'info',
         appearance: 'ghost',
-        className: 'text-[var(--color-info-accent,var(--color-violet-500))]',
+        className: 'text-ds-primary',
       },
       {
         variant: 'destructive',
         appearance: 'ghost',
-        className: 'text-destructive',
+        className: 'text-ds-error',
       },
 
       { size: 'lg', appearance: 'ghost', className: 'px-0' },

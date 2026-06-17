@@ -1,4 +1,5 @@
 import { PieChart, Pie, Cell, Legend } from "recharts"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   ChartContainer,
@@ -22,9 +23,9 @@ export function ExpenseBreakdown() {
         <CardTitle className="text-lg font-semibold text-ds-on-surface">
           Expense Breakdown
         </CardTitle>
-        <button className="p-2 hover:bg-ds-surface-mid rounded-full transition-colors">
+        <Button variant="ghost" size="icon">
           <Icon name="more-vertical" className="h-5 w-5 text-ds-on-surface-variant" />
-        </button>
+        </Button>
       </CardHeader>
       <CardContent className="pt-6">
         <ChartContainer config={chartConfig} className="h-[300px] w-full">

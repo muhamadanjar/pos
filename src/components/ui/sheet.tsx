@@ -36,7 +36,7 @@ function SheetOverlay({ className, ...props }: React.ComponentProps<typeof Sheet
 }
 
 const sheetVariants = cva(
-  'flex flex-col items-strech fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-400',
+  'flex flex-col items-strech fixed z-50 gap-4 bg-ds-surface-container-lowest p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-400',
   {
     variants: {
       side: {
@@ -77,7 +77,7 @@ function SheetContent({
         {close && (
           <SheetPrimitive.Close
             data-slot="sheet-close"
-            className="cursor-pointer absolute end-5 top-4 rounded-sm opacity-60 ring-offset-background transition-opacity hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
+            className="cursor-pointer absolute end-5 top-4 rounded-sm opacity-60 ring-offset-ds-surface-container-lowest transition-opacity hover:opacity-100 focus:outline-hidden focus:ring-2 focus:ring-ds-primary focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"
           >
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>
@@ -126,7 +126,7 @@ function SheetDescription({ className, ...props }: React.ComponentProps<typeof S
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
-      className={cn('text-sm text-muted-foreground', className)}
+      className={cn('text-sm text-ds-on-surface-variant', className)}
       {...props}
     />
   );

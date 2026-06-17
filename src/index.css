@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
+@import "@fontsource-variable/inter";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
     --font-heading: var(--font-sans);
-    --font-sans: 'Geist Variable', sans-serif;
+    --font-sans: 'Inter Variable', sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -56,10 +56,20 @@
     --color-ds-secondary-container: var(--ds-secondary-container);
     --color-ds-tertiary: var(--ds-tertiary);
     --color-ds-tertiary-container: var(--ds-tertiary-container);
+    --color-ds-on-tertiary: var(--ds-on-tertiary);
+    --color-ds-on-tertiary-container: var(--ds-on-tertiary-container);
     --color-ds-error: var(--ds-error);
     --color-ds-error-container: var(--ds-error-container);
+    --color-ds-on-error-container: var(--ds-on-error-container);
     --color-ds-outline: var(--ds-outline);
     --color-ds-outline-variant: var(--ds-outline-variant);
+    --color-ds-surface-container-lowest: var(--ds-surface-container-lowest);
+    --color-ds-surface-container-low: var(--ds-surface-container-low);
+    --color-ds-surface-container: var(--ds-surface-container);
+    --color-ds-surface-container-high: var(--ds-surface-container-high);
+    --color-ds-surface-container-highest: var(--ds-surface-container-highest);
+    --color-ds-on-secondary: var(--ds-on-secondary);
+    --color-ds-on-secondary-container: var(--ds-on-secondary-container);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -93,7 +103,7 @@
     --chart-3: oklch(0.439 0 0);
     --chart-4: oklch(0.371 0 0);
     --chart-5: oklch(0.269 0 0);
-    --radius: 0.625rem;
+    --radius: 0.25rem;
     --sidebar: oklch(0.985 0 0);
     --sidebar-foreground: oklch(0.145 0 0);
     --sidebar-primary: oklch(0.205 0 0);
@@ -102,28 +112,40 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
-    /* DESIGN.md Botanical Palette */
-    --ds-surface: #f2fdec;
-    --ds-surface-dim: #d3ddce;
-    --ds-surface-low: #ecf7e7;
-    --ds-surface-mid: #e7f1e1;
-    --ds-surface-high: #e1ebdc;
-    --ds-surface-highest: #dbe6d6;
+    /* DESIGN.md Precision Editorial Palette */
+    --ds-surface: #faf9f8;
+    --ds-surface-dim: #dadad9;
     --ds-surface-lowest: #ffffff;
-    --ds-on-surface: #151e14;
-    --ds-on-surface-variant: #3d4a3b;
-    --ds-primary: #006e21;
+    --ds-surface-low: #f4f3f2;
+    --ds-surface-mid: #eeeeec;
+    --ds-surface-high: #e8e8e7;
+    --ds-surface-highest: #e3e2e1;
+    /* ds-surface-container-* aliases */
+    --ds-surface-container-lowest: var(--ds-surface-lowest);
+    --ds-surface-container-low: var(--ds-surface-low);
+    --ds-surface-container: var(--ds-surface-mid);
+    --ds-surface-container-high: var(--ds-surface-high);
+    --ds-surface-container-highest: var(--ds-surface-highest);
+    --ds-on-surface: #1a1c1b;
+    --ds-on-surface-variant: #414845;
+    --ds-primary: #00493a;
     --ds-on-primary: #ffffff;
-    --ds-primary-container: #47e660;
-    --ds-on-primary-container: #00631d;
-    --ds-secondary: #246c2c;
-    --ds-secondary-container: #a8f5a5;
-    --ds-tertiary: #865138;
-    --ds-tertiary-container: #ffba9a;
+    --ds-primary-container: #002018;
+    --ds-on-primary-container: #538f7d;
+    --ds-secondary: #4e635d;
+    --ds-on-secondary: #ffffff;
+    --ds-secondary-container: #d0e8e0;
+    --ds-on-secondary-container: #546963;
+    --ds-tertiary: #000000;
+    --ds-on-tertiary: #ffffff;
+    --ds-tertiary-container: #002019;
+    --ds-on-tertiary-container: #00957a;
     --ds-error: #ba1a1a;
+    --ds-on-error: #ffffff;
     --ds-error-container: #ffdad6;
-    --ds-outline: #6c7b69;
-    --ds-outline-variant: #bbcbb6;
+    --ds-on-error-container: #93000a;
+    --ds-outline: #727975;
+    --ds-outline-variant: #c1c8c4;
 }
 
 .dark {

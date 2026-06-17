@@ -1,5 +1,4 @@
 import { Card, CardHeader, CardContent } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
 import { TOP_PRODUCTS, fmt } from '../data/mock-data'
 
 const MAX_SOLD = TOP_PRODUCTS[0].sold

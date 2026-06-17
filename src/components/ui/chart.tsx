@@ -189,7 +189,7 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "grid min-w-32 items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
+        "grid min-w-32 items-start gap-1.5 rounded-lg border border-border/50 bg-ds-surface-container-lowest px-2.5 py-1.5 text-xs shadow-xl",
         className
       )}
     >
@@ -206,7 +206,7 @@ function ChartTooltipContent({
               <div
                 key={index}
                 className={cn(
-                  "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
+                  "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-ds-on-surface-variant",
                   indicator === "dot" && "items-center"
                 )}
               >
@@ -246,7 +246,7 @@ function ChartTooltipContent({
                     >
                       <div className="grid gap-1.5">
                         {nestLabel ? tooltipLabel : null}
-                        <span className="text-muted-foreground">
+                        <span className="text-ds-on-surface-variant">
                           {itemConfig?.label ?? item.name}
                         </span>
                       </div>
@@ -304,7 +304,7 @@ function ChartLegendContent({
             <div
               key={index}
               className={cn(
-                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
+                "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-ds-on-surface-variant"
               )}
             >
               {itemConfig?.icon && !hideIcon ? (

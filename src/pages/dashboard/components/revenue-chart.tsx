@@ -20,7 +20,7 @@ export default function RevenueChart() {
   const totalRevenue = DAILY_REVENUE.reduce((s, d) => s + d.revenue, 0)
 
   return (
-    <Card>
+    <Card className='pt-4'>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 border-b border-ds-outline/15 pb-4">
         <div>
           <CardTitle className="text-lg font-semibold text-ds-on-surface">

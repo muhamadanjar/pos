@@ -68,7 +68,7 @@ function DataGridPagination(props: DataGridPaginationProps) {
           size="sm"
           mode="icon"
           variant="ghost"
-          className={cn(btnBaseClasses, 'text-muted-foreground', {
+          className={cn(btnBaseClasses, 'text-ds-on-surface-variant', {
             'bg-accent text-accent-foreground': pageIndex === i,
           })}
           onClick={() => {
@@ -133,7 +133,7 @@ function DataGridPagination(props: DataGridPaginationProps) {
           mergedProps?.sizesSkeleton
         ) : (
           <>
-            <div className="text-sm text-muted-foreground">Rows per page</div>
+            <div className="text-sm text-ds-on-surface-variant">Rows per page</div>
             <Select
               value={`${pageSize}`}
               indicatorPosition="right"
@@ -161,7 +161,7 @@ function DataGridPagination(props: DataGridPaginationProps) {
           mergedProps?.infoSkeleton
         ) : (
           <>
-            <div className="text-sm text-muted-foreground text-nowrap order-2 sm:order-1">{paginationInfo}</div>
+            <div className="text-sm text-ds-on-surface-variant text-nowrap order-2 sm:order-1">{paginationInfo}</div>
             {pageCount > 1 && (
               <div className="flex items-center space-x-1 order-1 sm:order-2">
                 <Button

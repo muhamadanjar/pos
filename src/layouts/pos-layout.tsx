@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
+import { Button } from '@/components/ui/button'
 import Icon from '@/components/icons'
 
 interface POSLayoutProps {
@@ -15,22 +16,8 @@ function POSLayout({ children }: POSLayoutProps) {
   }, [])
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-slate-50 text-slate-800 font-sans antialiased overflow-hidden">
-      {/* Design System variables for Mint/Pastel Green POS Theme */}
+    <div className="h-screen w-screen flex flex-col bg-ds-surface text-ds-on-surface font-sans antialiased overflow-hidden">
       <style>{`
-        :root {
-          --mint-50: #f4f9f6;
-          --mint-100: #e3f0e9;
-          --mint-200: #cbe4d7;
-          --mint-300: #A7D7C5;
-          --mint-400: #8dc8b3;
-          --mint-500: #70b69e;
-          --mint-600: #549c84;
-          --mint-700: #437d6a;
-          --mint-800: #366455;
-          --mint-900: #2d5347;
-        }
-
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
@@ -41,29 +28,32 @@ function POSLayout({ children }: POSLayoutProps) {
       `}</style>
 
       {/* Top Header */}
-      <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 shrink-0 shadow-sm z-10">
+      <header className="h-14 bg-ds-surface-lowest border-b border-ds-outline-variant/15 flex items-center justify-between px-6 shrink-0 shadow-sm z-10">
         
         {/* Branding & Navigation */}
         <div className="flex items-center gap-4 w-1/4">
-          <Link
-            to="/dashboard"
-            className="p-2 text-slate-500 hover:text-[var(--mint-900)] hover:bg-[var(--mint-50)] rounded-lg transition-colors group flex items-center justify-center cursor-pointer"
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
             title="Back to Dashboard"
           >
-            <Icon name="arrow-left" className="h-5 w-5" />
-          </Link>
-          <div className="h-6 w-px bg-slate-200"></div>
-          <h1 className="text-lg font-semibold tracking-tight text-slate-900">Iron Ledger POS</h1>
+            <Link to="/dashboard">
+              <Icon name="arrow-left" className="h-5 w-5" />
+            </Link>
+          </Button>
+          <div className="h-6 w-px bg-ds-outline-variant/20"></div>
+          <h1 className="text-lg font-semibold tracking-tight text-ds-on-surface">Precision POS</h1>
         </div>
 
         {/* Search Bar */}
         <div className="flex-1 max-w-2xl px-4">
-          <div className="relative flex items-center w-full h-10 rounded-lg bg-slate-100 border border-transparent focus-within:border-[var(--mint-400)] focus-within:bg-white focus-within:ring-2 focus-within:ring-[var(--mint-400)]/20 transition-all overflow-hidden">
-            <div className="grid place-items-center h-full w-12 text-slate-400">
+          <div className="relative flex items-center w-full h-10 rounded-lg bg-ds-surface-high border border-transparent focus-within:bg-ds-surface-lowest focus-within:border-ds-primary/20 focus-within:ring-2 focus-within:ring-ds-primary/10 transition-all overflow-hidden">
+            <div className="grid place-items-center h-full w-12 text-ds-on-surface-variant">
               <Icon name="search" className="h-5 w-5" />
             </div>
             <input
-              className="peer h-full w-full outline-none text-sm text-slate-700 bg-transparent pr-2 placeholder-slate-400 border-none focus:ring-0 p-0"
+              className="peer h-full w-full outline-none text-sm text-ds-on-surface bg-transparent pr-2 placeholder-ds-on-surface-variant border-none focus:ring-0 p-0"
               id="search"
               placeholder="Search products, barcodes, or SKUs..."
               type="text"
@@ -73,8 +63,8 @@ function POSLayout({ children }: POSLayoutProps) {
 
         {/* Time & Quick Actions */}
         <div className="flex items-center justify-end gap-4 w-1/4">
-          <div className="hidden lg:flex items-center gap-2 text-sm text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full border border-slate-200">
-            <Icon name="clock" className="size-4 text-[var(--mint-600)]" />
+          <div className="hidden lg:flex items-center gap-2 text-sm text-ds-on-surface-variant bg-ds-surface-high px-3 py-1.5 rounded-full border border-ds-outline-variant/30">
+            <Icon name="clock" className="size-4 text-ds-primary" />
             <span className="font-medium">
               {time.toLocaleDateString('id-ID', {
                 weekday: 'short',
@@ -90,12 +80,12 @@ function POSLayout({ children }: POSLayoutProps) {
           </div>
 
           <div className="flex items-center gap-1">
-            <button className="p-2 text-slate-500 hover:bg-[var(--mint-50)] hover:text-[var(--mint-800)] rounded-lg transition-colors cursor-pointer" aria-label="Sync">
+            <Button variant="ghost" size="icon" aria-label="Sync">
               <Icon name="refresh-cw" className="h-4 w-4" />
-            </button>
-            <button className="p-2 text-slate-500 hover:bg-[var(--mint-50)] hover:text-[var(--mint-800)] rounded-lg transition-colors cursor-pointer" aria-label="Fullscreen">
+            </Button>
+            <Button variant="ghost" size="icon" aria-label="Fullscreen">
               <Icon name="maximize" className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         </div>
       </header>

@@ -5,13 +5,13 @@ import { cva, type VariantProps } from 'class-variance-authority';
 // Define input size variants
 const inputVariants = cva(
   `
-    flex w-full bg-background border border-input shadow-xs shadow-black/5 transition-[color,box-shadow] text-foreground placeholder:text-muted-foreground/80 
-    focus-visible:ring-ring/30  focus-visible:border-ring focus-visible:outline-none focus-visible:ring-[3px]     
+    flex w-full bg-ds-surface-container-lowest border border-ds-outline-variant shadow-xs shadow-black/5 transition-[color,box-shadow] text-foreground placeholder:text-ds-on-surface-variant/80 
+    focus-visible:ring-ds-primary/30  focus-visible:border-ring focus-visible:outline-none focus-visible:ring-[3px]     
     disabled:cursor-not-allowed disabled:opacity-60 
     [&[readonly]]:bg-muted/80 [&[readonly]]:cursor-not-allowed
-    file:h-full [&[type=file]]:py-0 file:border-solid file:border-input file:bg-transparent 
+    file:h-full [&[type=file]]:py-0 file:border-solid file:border-ds-outline-variant file:bg-transparent 
     file:font-medium file:not-italic file:text-foreground file:p-0 file:border-0 file:border-e
-    aria-invalid:border-destructive/60 aria-invalid:ring-destructive/10 dark:aria-invalid:border-destructive dark:aria-invalid:ring-destructive/20
+    aria-invalid:border-ds-error/60 aria-invalid:ring-ds-error/10 dark:aria-invalid:border-ds-error dark:aria-invalid:ring-ds-error/20
   `,
   {
     variants: {
@@ -28,7 +28,7 @@ const inputVariants = cva(
 );
 
 const inputAddonVariants = cva(
-  'flex items-center shrink-0 justify-center bg-muted border border-input shadow-xs shadow-[rgba(0,0,0,0.05)] text-secondary-foreground [&_svg]:text-secondary-foreground/60',
+  'flex items-center shrink-0 justify-center bg-muted border border-ds-outline-variant shadow-xs shadow-[rgba(0,0,0,0.05)] text-secondary-foreground [&_svg]:text-secondary-foreground/60',
   {
     variants: {
       variant: {
@@ -75,7 +75,7 @@ const inputGroupVariants = cva(
 const inputWrapperVariants = cva(
   `
     flex items-center gap-1.5
-    has-[:focus-visible]:ring-ring/30 
+    has-[:focus-visible]:ring-ds-primary/30 
     has-[:focus-visible]:border-ring
     has-[:focus-visible]:outline-none 
     has-[:focus-visible]:ring-[3px]
@@ -89,7 +89,7 @@ const inputWrapperVariants = cva(
     [&_[data-slot=input]]:outline-none 
     [&_[data-slot=input]]:transition-colors 
     [&_[data-slot=input]]:text-foreground
-    [&_[data-slot=input]]:placeholder:text-muted-foreground 
+    [&_[data-slot=input]]:placeholder:text-ds-on-surface-variant 
     [&_[data-slot=input]]:border-0 
     [&_[data-slot=input]]:bg-transparent 
     [&_[data-slot=input]]:p-0
@@ -99,7 +99,7 @@ const inputWrapperVariants = cva(
     [&_[data-slot=input]]:disabled:cursor-not-allowed
     [&_[data-slot=input]]:disabled:opacity-50    
 
-    [&_svg]:text-muted-foreground 
+    [&_svg]:text-ds-on-surface-variant 
     [&_svg]:shrink-0
   `,
   {

@@ -23,7 +23,7 @@ const chartConfig = {
   },
   expenses: {
     label: "Expenses",
-    color: "var(--ds-tertiary)",
+    color: "var(--ds-secondary)",
   },
 } satisfies ChartConfig
 
@@ -76,7 +76,7 @@ export function IncomeChart() {
             />
             <Bar
               dataKey="expenses"
-              fill="var(--ds-tertiary)"
+              fill="var(--ds-secondary)"
               radius={[8, 8, 0, 0]}
               name="Expenses"
             />

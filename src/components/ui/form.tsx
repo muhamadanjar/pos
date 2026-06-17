@@ -111,7 +111,7 @@ function FormDescription({ className, ...props }: React.HTMLAttributes<HTMLParag
     <div
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn('text-xs text-muted-foreground -mt-0.5', className)}
+      className={cn('text-xs text-ds-on-surface-variant -mt-0.5', className)}
       {...props}
     />
   );
@@ -129,7 +129,7 @@ function FormMessage({ className, children, ...props }: React.HTMLAttributes<HTM
     <div
       data-slot="form-message"
       id={formMessageId}
-      className={cn('-mt-0.5 text-xs font-normal text-destructive', className)}
+      className={cn('-mt-0.5 text-xs font-normal text-ds-error', className)}
       {...props}
     >
       {body}

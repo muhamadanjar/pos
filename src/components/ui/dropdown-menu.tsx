@@ -103,7 +103,7 @@ function DropdownMenuItem({
         'data-[active=true]:bg-accent data-[active=true]:text-accent-foreground',
         inset && 'ps-8',
         variant === 'destructive' &&
-          'text-destructive hover:text-destructive focus:text-destructive hover:bg-destructive/5 focus:bg-destructive/5 data-[active=true]:bg-destructive/5',
+          'text-ds-error hover:text-ds-error focus:text-ds-error hover:bg-ds-error/5 focus:bg-ds-error/5 data-[active=true]:bg-ds-error/5',
         className,
       )}
       {...props}
@@ -127,7 +127,7 @@ function DropdownMenuCheckboxItem({
       checked={checked}
       {...props}
     >
-      <span className="absolute start-2 flex h-3.5 w-3.5 items-center text-muted-foreground justify-center">
+      <span className="absolute start-2 flex h-3.5 w-3.5 items-center text-ds-on-surface-variant justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
           <Check className="h-4 w-4 text-primary" />
         </DropdownMenuPrimitive.ItemIndicator>
@@ -171,7 +171,7 @@ function DropdownMenuLabel({
   return (
     <DropdownMenuPrimitive.Label
       data-slot="dropdown-menu-label"
-      className={cn('px-2 py-1.5 text-xs text-muted-foreground font-medium', inset && 'ps-8', className)}
+      className={cn('px-2 py-1.5 text-xs text-ds-on-surface-variant font-medium', inset && 'ps-8', className)}
       {...props}
     />
   );
