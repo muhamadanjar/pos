@@ -60,9 +60,29 @@ Custom Style in folder `src/styles/`
 
 ## Rules
 
-- **FORBIDDEN: ALL git write operations** — `git commit`, `git push`, `git merge`, `git rebase`, `git reset`, `git checkout`, `git branch -D`, `git rm`, `git add`, etc. but you can suggest commit message
-- **Git read-only ONLY:** `git log`, `git status`, `git diff`, `git show`
-- **NO --force, --no-verify, --amend, or workarounds** — Never attempt to bypass restrictions
+### Git Operations — STRICTLY FORBIDDEN
+
+**NO git write operations allowed:**
+- ❌ `git commit` — FORBIDDEN
+- ❌ `git push` — FORBIDDEN
+- ❌ `git add` — FORBIDDEN
+- ❌ `git rm` — FORBIDDEN
+- ❌ `git merge` — FORBIDDEN
+- ❌ `git rebase` — FORBIDDEN
+- ❌ `git reset` — FORBIDDEN
+- ❌ `git checkout` — FORBIDDEN
+- ❌ `--force`, `--no-verify`, `--amend` flags — FORBIDDEN
+- ❌ Any submodule operations — FORBIDDEN
+
+**Only read-only operations allowed:**
+- ✅ `git log` — View commit history
+- ✅ `git status` — Check working tree status
+- ✅ `git diff` — View changes
+- ✅ `git show` — View commit details
+
+**Why:** Part of multi-service monorepo with git submodules. All git operations coordinated at root by authorized personnel.
+
+### Code Style
 
 - for files use `kebab-case` but component use `PascalCase`
 - **No `any` types** — Use proper TypeScript types unless unavoidable (document why)

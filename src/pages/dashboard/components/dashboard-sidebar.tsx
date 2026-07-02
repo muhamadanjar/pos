@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
+import { motion } from 'motion'
 import Icon from '@/components/icons'
 import { cn } from '@/lib/utils'
 import type { MenuItem } from '@/types/menu'
@@ -19,7 +20,12 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
   const hasChildren = item.children && item.children.length > 0
 
   return (
-    <div key={item.label}>
+    <motion.div
+      key={item.label}
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2 }}
+    >
       {item.href ? (
         <Link
           to={item.href}
@@ -35,34 +41,50 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
           <span>{item.label}</span>
         </Link>
       ) : (
-        <Button
-          variant="ghost"
+        <motion.button
           onClick={() => setExpanded(!expanded)}
-          className={cn(
-            'w-full justify-between',
-            expanded && 'bg-ds-surface-mid'
-          )}
-          style={{ marginLeft: `${level * 12}px` }}
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors justify-between"
+          style={{
+            marginLeft: `${level * 12}px`,
+            background: expanded ? 'var(--ds-surface-mid)' : 'transparent',
+            color: 'var(--ds-on-surface)',
+          }}
+          whileHover={{ background: expanded ? 'var(--ds-surface-mid)' : 'var(--ds-surface-low)' }}
+          whileTap={{ scale: 0.98 }}
         >
           <div className="flex items-center gap-3">
             {item.icon && <Icon name={item.icon} className="w-4 h-4 shrink-0" />}
             <span>{item.label}</span>
           </div>
-          <Icon
-            name={expanded ? 'chevron-down' : 'chevron-right'}
-            className="w-4 h-4 shrink-0 text-ds-on-surface-variant"
-          />
-        </Button>
+          <motion.div
+            animate={{ rotate: expanded ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Icon
+              name="chevron-right"
+              className="w-4 h-4 shrink-0"
+              style={{ color: 'var(--ds-on-surface-variant)' }}
+            />
+          </motion.div>
+        </motion.button>
       )}
 
-      {hasChildren && expanded && (
-        <div className="mt-1">
+      {hasChildren && (
+        <motion.div
+          className="mt-1 overflow-hidden"
+          initial={false}
+          animate={{
+            opacity: expanded ? 1 : 0,
+            height: expanded ? 'auto' : 0,
+          }}
+          transition={{ duration: 0.3 }}
+        >
           {item.children!.map((child) => (
             <MenuItemComponent key={child.label} item={child} pathname={pathname} level={level + 1} />
           ))}
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   )
 }
 
@@ -78,7 +100,12 @@ export default function DashboardSidebar() {
       }}
     >
       {/* Branding */}
-      <div className="h-14 flex items-center px-6 shrink-0">
+      <motion.div
+        className="h-14 flex items-center px-6 shrink-0"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center mr-3"
           style={{ background: 'var(--ds-primary)' }}
@@ -88,8 +115,49 @@ export default function DashboardSidebar() {
         <span className="text-sm font-bold tracking-tight" style={{ color: 'var(--ds-on-surface)' }}>
           Precision POS
         </span>
-      </div>
+      </motion.div>
 
+<<<<<<< HEAD
+      {/* Search */}
+      <motion.div
+        className="px-3 py-3 border-b shrink-0"
+        style={{ borderColor: 'var(--ds-outline-variant)' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+      >
+        <motion.button
+          onClick={() => setSearchOpen(!searchOpen)}
+          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors"
+          style={{
+            background: 'var(--ds-surface-mid)',
+            color: 'var(--ds-on-surface-variant)',
+          }}
+          whileHover={{ background: 'var(--ds-surface-highest)' }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Icon name="search" className="w-4 h-4" />
+          <span>Search menu...</span>
+        </motion.button>
+        {searchOpen && (
+          <motion.input
+            type="text"
+            placeholder="Type to search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full mt-2 px-3 py-2 rounded-lg text-sm border-0 outline-none"
+            style={{
+              background: 'var(--ds-surface-highest)',
+              color: 'var(--ds-on-surface)',
+            }}
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2 }}
+            autoFocus
+          />
+        )}
+      </motion.div>
+=======
       {/* New Transaction CTA */}
       <div className="px-3 py-3">
         <Link to="/pos">
@@ -99,6 +167,7 @@ export default function DashboardSidebar() {
           </Button>
         </Link>
       </div>
+>>>>>>> dev
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-3 py-4">
@@ -108,12 +177,35 @@ export default function DashboardSidebar() {
       </nav>
 
       {/* Footer */}
+<<<<<<< HEAD
+      <motion.div
+        className="border-t px-3 py-4 shrink-0"
+        style={{ borderColor: 'var(--ds-outline-variant)' }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+      >
+        <motion.button
+          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
+          style={{
+            background: 'transparent',
+            color: 'var(--ds-on-surface-variant)',
+          }}
+          whileHover={{ background: 'var(--ds-surface-mid)', color: 'var(--ds-on-surface)' }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Icon name="log-out" className="w-4 h-4" />
+          <span>Logout</span>
+        </motion.button>
+      </motion.div>
+=======
       <div className="border-t px-3 py-4 shrink-0" style={{ borderColor: 'var(--ds-outline-variant)' }}>
         <Button variant="ghost" className="w-full justify-start gap-3">
           <Icon name="log-out" className="w-4 h-4" />
           <span>Logout</span>
         </Button>
       </div>
+>>>>>>> dev
     </aside>
   )
 }
