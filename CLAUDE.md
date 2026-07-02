@@ -96,3 +96,4 @@ Custom Style in folder `src/styles/`
   // ❌ Bad
   import { ChevronDown, Settings } from 'lucide-react'
   import Icon from '@/components/icons/ChevronDown'
+- Always use `@components/ui` for base components

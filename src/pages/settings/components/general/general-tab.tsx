@@ -20,15 +20,21 @@ export function GeneralTab() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 pt-6">
-        <div className="grid grid-cols-2 gap-6">
-          <CurrencySection control={form.control} />
-          <TaxationSection control={form.control} />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="relative">
+        <div className="space-y-6 pb-24">
+          <div className="grid grid-cols-2 gap-6">
+            <CurrencySection control={form.control} />
+            <TaxationSection control={form.control} />
+          </div>
         </div>
-        <SettingsActions
-          onDiscard={() => form.reset()}
-          isDirty={form.formState.isDirty}
-        />
+        <div className="fixed bottom-0 left-64 right-0 bg-ds-surface border-t border-ds-surface-highest p-6 z-40">
+          <div className="max-w-6xl mx-auto">
+            <SettingsActions
+              onDiscard={() => form.reset()}
+              isDirty={form.formState.isDirty}
+            />
+          </div>
+        </div>
       </form>
     </Form>
   )

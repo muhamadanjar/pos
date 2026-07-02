@@ -1,79 +1,159 @@
-import * as React from "react"
-import { Accordion as AccordionPrimitive } from "radix-ui"
+'use client';
 
-import { cn } from "@/lib/utils"
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { ChevronDown, Plus } from 'lucide-react';
+import { Accordion as AccordionPrimitive } from 'radix-ui';
 
-function Accordion({
-  className,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Root>) {
+// Variants
+const accordionRootVariants = cva('', {
+  variants: {
+    variant: {
+      default: '',
+      outline: 'space-y-2',
+      solid: 'space-y-2',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+const accordionItemVariants = cva('', {
+  variants: {
+    variant: {
+      default: 'border-b border-border',
+      outline: 'border border-border rounded-lg px-4',
+      solid: 'rounded-lg bg-accent/70 px-4',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
+
+const accordionTriggerVariants = cva(
+  'flex flex-1 items-center justify-between py-4 gap-2.5 text-foreground font-medium transition-all [&[data-state=open]>svg]:rotate-180 cursor-pointer',
+  {
+    variants: {
+      variant: {
+        default: '',
+        outline: '',
+        solid: '',
+      },
+      indicator: {
+        arrow: '',
+        plus: '[&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0 [&[data-state=open]>svg]:rotate-180',
+        none: '',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      indicator: 'arrow',
+    },
+  },
+);
+
+const accordionContentVariants = cva(
+  'overflow-hidden text-sm text-accent-foreground transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
+  {
+    variants: {
+      variant: {
+        default: '',
+        outline: '',
+        solid: '',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
+// Context
+type AccordionContextType = {
+  variant?: 'default' | 'outline' | 'solid';
+  indicator?: 'arrow' | 'plus' | 'none';
+};
+
+const AccordionContext = React.createContext<AccordionContextType>({
+  variant: 'default',
+  indicator: 'arrow',
+});
+
+// Components
+function Accordion(
+  props: React.ComponentProps<typeof AccordionPrimitive.Root> &
+    VariantProps<typeof accordionRootVariants> & {
+      indicator?: 'arrow' | 'plus';
+    },
+) {
+  const { className, variant = 'default', indicator = 'arrow', children, ...rest } = props;
+
   return (
-    <AccordionPrimitive.Root
-      data-slot="accordion"
-      className={cn("flex w-full flex-col", className)}
-      {...props}
-    />
-  )
+    <AccordionContext.Provider value={{ variant: variant || 'default', indicator }}>
+      <AccordionPrimitive.Root
+        data-slot="accordion"
+        className={cn(accordionRootVariants({ variant }), className)}
+        {...rest}
+      >
+        {children}
+      </AccordionPrimitive.Root>
+    </AccordionContext.Provider>
+  );
 }
 
-function AccordionItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Item>) {
+function AccordionItem(props: React.ComponentProps<typeof AccordionPrimitive.Item>) {
+  const { className, children, ...rest } = props;
+  const { variant } = React.useContext(AccordionContext);
+
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("not-last:border-b", className)}
-      {...props}
-    />
-  )
+      className={cn(accordionItemVariants({ variant }), className)}
+      {...rest}
+    >
+      {children}
+    </AccordionPrimitive.Item>
+  );
 }
 
-function AccordionTrigger({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
+function AccordionTrigger(props: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
+  const { className, children, ...rest } = props;
+  const { variant, indicator } = React.useContext(AccordionContext);
+
   return (
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
-        className={cn(
-          "group/accordion-trigger relative flex flex-1 items-start justify-between rounded-lg border border-transparent py-2.5 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:border-ring disabled:pointer-events-none disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-4 **:data-[slot=accordion-trigger-icon]:text-muted-foreground",
-          className
-        )}
-        {...props}
+        className={cn(accordionTriggerVariants({ variant, indicator }), className)}
+        {...rest}
       >
         {children}
-        <ChevronDownIcon data-slot="accordion-trigger-icon" className="pointer-events-none shrink-0 group-aria-expanded/accordion-trigger:hidden" />
-        <ChevronUpIcon data-slot="accordion-trigger-icon" className="pointer-events-none hidden shrink-0 group-aria-expanded/accordion-trigger:inline" />
+        {indicator === 'plus' && <Plus className="size-4 shrink-0 transition-transform duration-200" strokeWidth={1} />}
+        {indicator === 'arrow' && (
+          <ChevronDown className="size-4 shrink-0 transition-transform duration-200" strokeWidth={1} />
+        )}
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
-  )
+  );
 }
 
-function AccordionContent({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof AccordionPrimitive.Content>) {
+function AccordionContent(props: React.ComponentProps<typeof AccordionPrimitive.Content>) {
+  const { className, children, ...rest } = props;
+  const { variant } = React.useContext(AccordionContext);
+
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="overflow-hidden text-sm data-open:animate-accordion-down data-closed:animate-accordion-up"
-      {...props}
+      className={cn(accordionContentVariants({ variant }), className)}
+      {...rest}
     >
-      <div
-        className={cn(
-          "h-(--radix-accordion-content-height) pt-0 pb-2.5 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
-          className
-        )}
-      >
-        {children}
-      </div>
+      <div className={cn('pb-5 pt-0', className)}>{children}</div>
     </AccordionPrimitive.Content>
-  )
+  );
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+// Exports
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

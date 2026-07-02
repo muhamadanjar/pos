@@ -1,53 +1,53 @@
----
+----
 name: Precision Editorial POS
 colors:
-  surface: '#f2fdec'
-  surface-dim: '#d3ddce'
-  surface-bright: '#f2fdec'
+  surface: '#faf9f8'
+  surface-dim: '#dadad9'
+  surface-bright: '#faf9f8'
   surface-container-lowest: '#ffffff'
-  surface-container-low: '#ecf7e7'
-  surface-container: '#e7f1e1'
-  surface-container-high: '#e1ebdc'
-  surface-container-highest: '#dbe6d6'
-  on-surface: '#151e14'
-  on-surface-variant: '#3d4a3b'
-  inverse-surface: '#2a3328'
-  inverse-on-surface: '#e9f4e4'
-  outline: '#6c7b69'
-  outline-variant: '#bbcbb6'
-  surface-tint: '#006e21'
-  primary: '#006e21'
+  surface-container-low: '#f4f3f2'
+  surface-container: '#eeeeec'
+  surface-container-high: '#e8e8e7'
+  surface-container-highest: '#e3e2e1'
+  on-surface: '#1a1c1b'
+  on-surface-variant: '#414845'
+  inverse-surface: '#2f3130'
+  inverse-on-surface: '#f1f1ef'
+  outline: '#727975'
+  outline-variant: '#c1c8c4'
+  surface-tint: '#2c6958'
+  primary: '#000000'
   on-primary: '#ffffff'
-  primary-container: '#47e660'
-  on-primary-container: '#00631d'
-  inverse-primary: '#42e35d'
-  secondary: '#246c2c'
+  primary-container: '#002018'
+  on-primary-container: '#538f7d'
+  inverse-primary: '#96d3be'
+  secondary: '#4e635d'
   on-secondary: '#ffffff'
-  secondary-container: '#a8f5a5'
-  on-secondary-container: '#2b7232'
-  tertiary: '#865138'
+  secondary-container: '#d0e8e0'
+  on-secondary-container: '#546963'
+  tertiary: '#000000'
   on-tertiary: '#ffffff'
-  tertiary-container: '#ffba9a'
-  on-tertiary-container: '#7a482f'
+  tertiary-container: '#002019'
+  on-tertiary-container: '#00957a'
   error: '#ba1a1a'
   on-error: '#ffffff'
   error-container: '#ffdad6'
   on-error-container: '#93000a'
-  primary-fixed: '#6eff7c'
-  primary-fixed-dim: '#42e35d'
-  on-primary-fixed: '#002105'
-  on-primary-fixed-variant: '#005317'
-  secondary-fixed: '#a8f5a5'
-  secondary-fixed-dim: '#8dd88b'
-  on-secondary-fixed: '#002105'
-  on-secondary-fixed-variant: '#005316'
-  tertiary-fixed: '#ffdbcc'
-  tertiary-fixed-dim: '#fcb797'
-  on-tertiary-fixed: '#341101'
-  on-tertiary-fixed-variant: '#6a3a23'
-  background: '#f2fdec'
-  on-background: '#151e14'
-  surface-variant: '#dbe6d6'
+  primary-fixed: '#b1efda'
+  primary-fixed-dim: '#96d3be'
+  on-primary-fixed: '#002018'
+  on-primary-fixed-variant: '#0d5041'
+  secondary-fixed: '#d0e8e0'
+  secondary-fixed-dim: '#b5cbc4'
+  on-secondary-fixed: '#0a1f1a'
+  on-secondary-fixed-variant: '#364b45'
+  tertiary-fixed: '#7cf8d6'
+  tertiary-fixed-dim: '#5ddbba'
+  on-tertiary-fixed: '#002019'
+  on-tertiary-fixed-variant: '#005141'
+  background: '#faf9f8'
+  on-background: '#1a1c1b'
+  surface-variant: '#e3e2e1'
 typography:
   display-lg:
     fontFamily: Inter
@@ -100,7 +100,7 @@ Our North Star is a high-end, editorial-inspired interface that treats transacti
 ---
 
 ## 2. Color & Surface Architecture
-We move beyond flat UI by treating the screen as a series of physical, layered surfaces. The palette has shifted to a botanical, earthy scheme that feels organic yet professional.
+We move beyond flat UI by treating the screen as a series of physical, layered surfaces. The palette has shifted to a **Deep Forest and Mint** scheme that feels authoritative, cool, and professional.
 
 ### The "No-Line" Rule
 **Explicit Instruction:** You are prohibited from using 1px solid borders for sectioning. 
@@ -108,15 +108,15 @@ Structure must be defined by background shifts. To separate a sidebar from a mai
 
 ### Surface Hierarchy & Nesting
 Use the `surface-container` tiers to create "nested" depth. This mimics stacked sheets of fine paper.
-*   **Base Layer:** `surface` (#f9faf8) – The primary canvas, now tinted with a hint of sage.
-*   **Secondary Zones:** `surface-container-low` (#f1f3ef) – Used for utility sidebars or non-primary navigation.
+*   **Base Layer:** `surface` (#f5fbf7) – The primary canvas, now tinted with a hint of cool forest air.
+*   **Secondary Zones:** `surface-container-low` (#eff5f1) – Used for utility sidebars or non-primary navigation.
 *   **Active Workspaces:** `surface-container-lowest` (#ffffff) – Reserved for the most critical interactive areas, like the active cart or "Total" summary, to give them a natural "lift."
-*   **Emphasis Zones:** `surface-container-high` (#e8ece6) – Used for contextual overlays or inactive states that require a "recessed" feel.
+*   **Emphasis Zones:** `surface-container-high` (#e4eae5) – Used for contextual overlays or inactive states that require a "recessed" feel.
 
 ### The "Glass & Gradient" Rule
 To inject "soul" into the POS, use Glassmorphism for floating modals or quick-action overlays.
 *   **Floating Elements:** Use `surface-container-lowest` with an 80% opacity and `backdrop-blur-xl`.
-*   **Signature Gradients:** For primary CTAs (e.g., "Complete Transaction"), transition from `primary` (#06c342) to a lighter variant at a 135-degree angle. This provides a tactile, luminous quality that feels energetic and decisive.
+*   **Signature Gradients:** For primary CTAs (e.g., "Complete Transaction"), transition from `primary` (#00493A) to a slightly lighter forest green variant at a 135-degree angle. This provides a tactile, luminous quality that feels energetic and decisive.
 
 ---
 
@@ -126,7 +126,7 @@ We use **Inter** not just for legibility, but as a brand signifier. The hierarch
 *   **The Power Value (`display-lg`):** Reserved exclusively for the "Grand Total." It should feel authoritative and unmissable.
 *   **The Editorial Header (`headline-sm`):** Use for category headers (e.g., "Apparel," "Accessories"). These should be set with slightly tighter letter-spacing (-0.02em) for a custom, bespoke feel.
 *   **Data Pairs:** Use `title-sm` for labels (e.g., "Subtotal") and `title-lg` for values. This creates a clear rhythmic contrast.
-*   **Micro-Copy:** `label-sm` is used for metadata (SKUs, tax rates) in `on_surface_variant` (#707a6d). Never use pure black; use our sage-tinted neutrals to maintain the organic editorial sophistication.
+*   **Micro-Copy:** `label-sm` is used for metadata (SKUs, tax rates) in `on-surface-variant` (#404944). Never use pure black; use our professional neutrals to maintain editorial sophistication.
 
 ---
 
@@ -134,27 +134,27 @@ We use **Inter** not just for legibility, but as a brand signifier. The hierarch
 Traditional POS systems use shadows to hide poor layout. We use elevation to imply importance.
 
 *   **The Layering Principle:** Depth is achieved by stacking. A `surface-container-lowest` card sitting on a `surface-container-low` section creates a soft, natural lift.
-*   **Ambient Shadows:** If a "floating" effect is required (e.g., a "Quick Look" product card), use an extra-diffused shadow: `shadow-[0_24px_48px_-12px_rgba(112,122,109,0.12)]`. The shadow must be tinted with our `on_surface` color to look natural, never a neutral grey.
-*   **The "Ghost Border" Fallback:** If accessibility requires a container boundary, use the `outline-variant` (#707a6d) at **15% opacity**. It should be a whisper, not a shout.
+*   **Ambient Shadows:** If a "floating" effect is required (e.g., a "Quick Look" product card), use an extra-diffused shadow: `shadow-[0_24px_48px_-12px_rgba(64,73,68,0.15)]`. The shadow must be tinted with our `on-surface` color to look natural, never a neutral grey.
+*   **The "Ghost Border" Fallback:** If accessibility requires a container boundary, use the `outline-variant` (#bfc9c2) at **15% opacity**. It should be a whisper, not a shout.
 
 ---
 
 ## 5. Components
 
 ### The "Signature" Button
-*   **Primary:** High-gloss gradient (`primary` #06c342 to a lighter green), `rounded-lg`, with a subtle `white/10%` inner top-border to mimic a light source.
-*   **Secondary:** `surface-container-highest` background with `on_surface` text. No border.
+*   **Primary:** High-gloss gradient (`primary` #00493A to a lighter forest green), `rounded-lg`, with a subtle `white/10%` inner top-border to mimic a light source.
+*   **Secondary:** Uses the `tertiary` (#00A385) mint teal to highlight secondary actions like "Add to Cart" or "Apply Discount."
 
 ### Transactional Lists
 *   **Forbid Divider Lines:** Separate line items using `py-4` vertical spacing and a subtle background hover state shift to `surface-container-low`. 
-*   **Visual Hierarchy:** Item names use `title-md`, while modifiers (e.g., "Extra Large," "Gift Wrap") use `body-sm` in `secondary` (#3f8643).
+*   **Visual Hierarchy:** Item names use `title-md`, while modifiers (e.g., "Extra Large," "Gift Wrap") use `body-sm` in `secondary` (#4e635d).
 
 ### Interactive Input Fields
 *   **Stateful Design:** Default state is a `surface-container-high` fill. On focus, the background shifts to `surface-container-lowest` and gains a `primary` ghost-border (20% opacity).
 *   **Typeface:** Use `body-lg` for input text to ensure touch-target legibility and high visual comfort for long shifts.
 
 ### Chips & Status
-*   **Inventory/Status:** Use `tertiary_container` (#ffba9a) for "Low Stock" and `secondary_container` (#e0eadf) for "In Stock." These should be `rounded-full` with `label-md` typography, acting as small editorial callouts.
+*   **Inventory/Status:** Use `tertiary-container` (#00c09d) for "In Stock" and `secondary-container` (#d1e8e0) for "Partial Stock." These should be `rounded-full` with `label-md` typography, acting as small editorial callouts.
 
 ---
 
@@ -163,11 +163,11 @@ Traditional POS systems use shadows to hide poor layout. We use elevation to imp
 ### Do:
 *   **Do** use whitespace as a functional tool. If the UI feels crowded, increase the `surface` padding rather than adding a border.
 *   **Do** use asymmetrical layouts for the dashboard. A wider "Product Grid" paired with a slimmer "Cart" creates a modern, editorial balance.
-*   **Do** prioritize `on_surface` (#181d17) for primary text to maintain the professional botanical aesthetic.
+*   **Do** prioritize `on-surface` (#171d1a) for primary text to maintain the professional aesthetic.
 
 ### Don't:
 *   **Don't** use 100% opaque borders. They break the fluid, layered illusion of the system.
-*   **Don't** use standard "Success Green." Use our specific `primary` botanical green or `tertiary` apricot accents to maintain the sophisticated palette.
+*   **Don't** use standard "Success Green." Use our specific `primary` forest green or `tertiary` mint accents to maintain the sophisticated palette.
 *   **Don't** use standard "drop shadows." If it doesn't look like ambient light hitting a surface, it’s too heavy.
 *   **Don't** use dividers in the cart. Let the alignment of the numbers and the weight of the typography create the columns.
 

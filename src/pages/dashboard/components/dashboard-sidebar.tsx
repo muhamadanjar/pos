@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import { motion } from 'motion'
 import Icon from '@/components/icons'
+import { cn } from '@/lib/utils'
 import type { MenuItem } from '@/types/menu'
-import { MENU_ITEMS } from '@/config';
+import { MENU_ITEMS } from '@/config'
+import { Button } from '@/components/ui/button'
 
 
 type MenuItemProps = {
@@ -27,14 +29,15 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
       {item.href ? (
         <Link
           to={item.href}
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
-          style={{
-            marginLeft: `${level * 12}px`,
-            background: isActive ? 'var(--ds-surface-highest)' : 'transparent',
-            color: isActive ? 'var(--ds-on-surface)' : 'var(--ds-on-surface-variant)',
-          }}
+          className={cn(
+            'relative w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
+            isActive
+              ? 'bg-ds-surface-highest text-ds-on-surface before:absolute before:left-0 before:top-2 before:bottom-2 before:w-0.5 before:rounded-full before:bg-ds-primary'
+              : 'text-ds-on-surface-variant hover:bg-ds-surface-mid hover:text-ds-on-surface'
+          )}
+          style={{ marginLeft: `${level * 12}px` }}
         >
-          {item.icon && <Icon name={item.icon} className="w-4 h-4 shrink-0" />}
+          {item.icon && <Icon name={item.icon} className={cn('w-4 h-4 shrink-0', isActive && 'text-ds-primary')} />}
           <span>{item.label}</span>
         </Link>
       ) : (
@@ -87,8 +90,6 @@ function MenuItemComponent({ item, pathname, level = 0 }: MenuItemProps) {
 
 export default function DashboardSidebar() {
   const { pathname } = useLocation()
-  const [searchOpen, setSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
 
   return (
     <aside
@@ -116,6 +117,7 @@ export default function DashboardSidebar() {
         </span>
       </motion.div>
 
+<<<<<<< HEAD
       {/* Search */}
       <motion.div
         className="px-3 py-3 border-b shrink-0"
@@ -155,6 +157,17 @@ export default function DashboardSidebar() {
           />
         )}
       </motion.div>
+=======
+      {/* New Transaction CTA */}
+      <div className="px-3 py-3">
+        <Link to="/pos">
+          <Button className="w-full bg-ds-primary text-ds-on-primary hover:bg-ds-primary/90 gap-2">
+            <Icon name="plus" className="w-4 h-4" />
+            New Transaction
+          </Button>
+        </Link>
+      </div>
+>>>>>>> dev
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-3 py-4">
@@ -164,6 +177,7 @@ export default function DashboardSidebar() {
       </nav>
 
       {/* Footer */}
+<<<<<<< HEAD
       <motion.div
         className="border-t px-3 py-4 shrink-0"
         style={{ borderColor: 'var(--ds-outline-variant)' }}
@@ -184,6 +198,14 @@ export default function DashboardSidebar() {
           <span>Logout</span>
         </motion.button>
       </motion.div>
+=======
+      <div className="border-t px-3 py-4 shrink-0" style={{ borderColor: 'var(--ds-outline-variant)' }}>
+        <Button variant="ghost" className="w-full justify-start gap-3">
+          <Icon name="log-out" className="w-4 h-4" />
+          <span>Logout</span>
+        </Button>
+      </div>
+>>>>>>> dev
     </aside>
   )
 }

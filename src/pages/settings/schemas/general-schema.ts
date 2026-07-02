@@ -18,7 +18,7 @@ export const generalSchema = z.object({
   roundingRule: z.enum(['nearest_five', 'nearest_whole', 'none']),
   enableGlobalTax: z.boolean(),
   taxCalculationMode: z.enum(['inclusive', 'exclusive']),
-  defaultTaxRate: z.number({ invalid_type_error: 'Tax rate must be a number' })
+  defaultTaxRate: z.number()
     .min(0, 'Minimum 0%')
     .max(100, 'Maximum 100%')
     .refine((val) => !Number.isNaN(val), { message: 'Tax rate is required' }),

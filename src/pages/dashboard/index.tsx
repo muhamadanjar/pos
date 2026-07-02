@@ -3,6 +3,7 @@ import KpiGrid from './components/kpi-grid'
 import RevenueChart from './components/revenue-chart'
 import TopProducts from './components/top-products'
 import RecentTransactions from './components/recent-transactions'
+import ReportsSection from './components/reports-section'
 
 export default function DashboardPage() {
   return (
@@ -18,6 +19,9 @@ export default function DashboardPage() {
 
       {/* Full-width recent transactions */}
       <RecentTransactions />
+
+      {/* Reports & Analytics Section */}
+      <ReportsSection />
     </DashboardLayout>
   )
 }

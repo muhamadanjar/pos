@@ -17,8 +17,8 @@ function CategoryFilter({ categories, selected, onSelect }: CategoryFilterProps)
           className={cn(
             'shrink-0 rounded-full px-5 py-2 text-sm font-medium transition-colors shadow-sm cursor-pointer',
             selected === cat
-              ? 'bg-[var(--mint-300)] text-[var(--mint-900)]'
-              : 'bg-white border border-slate-200 text-slate-600 hover:bg-[var(--mint-50)] hover:text-[var(--mint-900)] hover:border-[var(--mint-200)]',
+              ? 'bg-ds-primary text-ds-on-primary'
+              : 'bg-ds-surface-lowest border border-ds-outline-variant/20 text-ds-on-surface-variant hover:bg-ds-surface-low hover:text-ds-on-surface hover:border-ds-outline-variant/40',
           )}
         >
           {cat}

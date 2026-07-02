@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ShoppingCart, Search } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { useCartStore, computeTotals, type Customer } from '../store/use-cart-store'
 import CartItemRow from './cart-item-row'
 import PaymentMethod from './payment-method'
@@ -49,66 +50,58 @@ function CustomerModal({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl w-full max-w-md shadow-xl border border-slate-100 flex flex-col overflow-hidden max-h-[85vh]">
+      <div className="bg-ds-surface-lowest rounded-2xl w-full max-w-md shadow-xl border border-ds-outline-variant/10 flex flex-col overflow-hidden max-h-[85vh]">
         {/* Modal Header */}
-        <div className="flex justify-between items-center px-5 py-4 border-b border-slate-100 shrink-0">
-          <h3 className="text-base font-bold text-slate-900">Pilih Pelanggan</h3>
-          <button
-            type="button"
+        <div className="flex justify-between items-center px-5 py-4 border-b border-ds-outline-variant/10 shrink-0">
+          <h3 className="text-base font-bold text-ds-on-surface">Pilih Pelanggan</h3>
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
           >
             <Icon name="x" className="h-5 w-5" />
-          </button>
+          </Button>
         </div>
 
         {/* Tabs */}
-        <div className="flex border-b border-slate-200 shrink-0">
-          <button
-            type="button"
+        <div className="flex border-b border-ds-outline-variant/15 shrink-0">
+          <Button
+            variant={activeTab === 'walk-in' ? 'default' : 'ghost'}
             onClick={() => setActiveTab('walk-in')}
-            className={`flex-1 py-3 text-sm font-semibold transition-colors cursor-pointer border-b-2 ${
-              activeTab === 'walk-in'
-                ? 'text-[var(--mint-800)] border-[var(--mint-500)]'
-                : 'text-slate-500 border-transparent hover:text-slate-700'
-            }`}
+            className="flex-1 rounded-none border-b-2 font-semibold"
           >
             Walk-in Customer
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
+            variant={activeTab === 'member' ? 'default' : 'ghost'}
             onClick={() => setActiveTab('member')}
-            className={`flex-1 py-3 text-sm font-semibold transition-colors cursor-pointer border-b-2 ${
-              activeTab === 'member'
-                ? 'text-[var(--mint-800)] border-[var(--mint-500)]'
-                : 'text-slate-500 border-transparent hover:text-slate-700'
-            }`}
+            className="flex-1 rounded-none border-b-2 font-semibold"
           >
             Member
-          </button>
+          </Button>
         </div>
 
         {/* Tab Content */}
         <div className="flex-1 overflow-y-auto p-5">
           {activeTab === 'walk-in' ? (
             <div className="flex flex-col gap-4">
-              <p className="text-sm text-slate-500">Masukkan data pelanggan walk-in atau biarkan kosong.</p>
+              <p className="text-sm text-ds-on-surface-variant">Masukkan data pelanggan walk-in atau biarkan kosong.</p>
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs font-semibold text-slate-500">Nama Pelanggan</label>
+                  <label className="text-xs font-semibold text-ds-on-surface-variant">Nama Pelanggan</label>
                   <input
                     type="text"
-                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:border-[var(--mint-400)] focus:bg-white transition"
+                    className="w-full rounded-lg border border-ds-outline-variant/20 bg-ds-surface-low px-3 py-2.5 text-sm outline-none focus:border-ds-primary/20 focus:bg-ds-surface-lowest transition"
                     placeholder="Contoh: John Doe"
                     value={walkInName}
                     onChange={(e) => setWalkInName(e.target.value)}
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label className="text-xs font-semibold text-slate-500">No. Telepon (opsional)</label>
+                  <label className="text-xs font-semibold text-ds-on-surface-variant">No. Telepon (opsional)</label>
                   <input
                     type="tel"
-                    className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none focus:border-[var(--mint-400)] focus:bg-white transition"
+                    className="w-full rounded-lg border border-ds-outline-variant/20 bg-ds-surface-low px-3 py-2.5 text-sm outline-none focus:border-ds-primary/20 focus:bg-ds-surface-lowest transition"
                     placeholder="Contoh: 08123456789"
                     value={walkInPhone}
                     onChange={(e) => setWalkInPhone(e.target.value)}
@@ -120,11 +113,11 @@ function CustomerModal({ onClose }: { onClose: () => void }) {
             <div className="flex flex-col gap-3">
               {/* Search */}
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-ds-on-surface-variant pointer-events-none" />
                 <input
                   type="text"
                   placeholder="Cari nama, telepon, atau ID member..."
-                  className="w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 py-2.5 text-sm outline-none focus:border-[var(--mint-400)] focus:bg-white transition"
+                  className="w-full rounded-lg border border-ds-outline-variant/20 bg-ds-surface-low pl-9 pr-3 py-2.5 text-sm outline-none focus:border-ds-primary/20 focus:bg-ds-surface-lowest transition"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -133,7 +126,7 @@ function CustomerModal({ onClose }: { onClose: () => void }) {
               {/* Member List */}
               <div className="flex flex-col gap-2">
                 {filteredMembers.length === 0 ? (
-                  <p className="text-sm text-center text-slate-400 py-8">Tidak ada member ditemukan</p>
+                  <p className="text-sm text-center text-ds-on-surface-variant py-8">Tidak ada member ditemukan</p>
                 ) : (
                   filteredMembers.map((member) => {
                     const initials = member.name
@@ -144,32 +137,28 @@ function CustomerModal({ onClose }: { onClose: () => void }) {
                       .toUpperCase()
                     const isSelected = selectedMember?.memberId === member.memberId
                     return (
-                      <button
+                      <Button
                         key={member.memberId}
-                        type="button"
+                        variant={isSelected ? 'default' : 'outline'}
                         onClick={() => setSelectedMember(member)}
-                        className={`flex items-center gap-3 p-3 rounded-xl border text-left transition-all cursor-pointer ${
-                          isSelected
-                            ? 'bg-[var(--mint-50)] border-[var(--mint-300)]'
-                            : 'bg-white border-slate-200 hover:border-[var(--mint-200)] hover:bg-[var(--mint-50)]'
-                        }`}
+                        className="flex items-center gap-3 p-3 rounded-xl h-auto justify-start text-left"
                       >
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm shrink-0 ${
-                          isSelected ? 'bg-[var(--mint-300)] text-[var(--mint-900)]' : 'bg-slate-200 text-slate-600'
+                          isSelected ? 'bg-ds-primary text-ds-on-primary' : 'bg-ds-surface-high text-ds-on-surface-variant'
                         }`}>
                           {initials}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="font-semibold text-sm text-slate-900">{member.name}</p>
-                          <p className="text-xs text-slate-500">{member.phone}</p>
+                          <p className="font-semibold text-sm text-ds-on-surface">{member.name}</p>
+                          <p className="text-xs text-ds-on-surface-variant">{member.phone}</p>
                         </div>
                         <div className="text-right shrink-0">
-                          <p className="text-xs font-semibold text-slate-500">{member.memberId}</p>
-                          <p className="text-xs text-[var(--mint-700)] font-semibold">{member.points?.toLocaleString()} pts</p>
+                          <p className="text-xs font-semibold text-ds-on-surface-variant">{member.memberId}</p>
+                          <p className="text-xs text-ds-primary font-semibold">{member.points?.toLocaleString()} pts</p>
                         </div>
                         {isSelected && (
-                          <div className="shrink-0 w-5 h-5 rounded-full bg-[var(--mint-400)] flex items-center justify-center">
-                            <Icon name="check" className="h-3 w-3 text-white" />
+                          <div className="shrink-0 w-5 h-5 rounded-full bg-ds-primary flex items-center justify-center">
+                            <Icon name="check" className="h-3 w-3 text-ds-on-primary" />
                           </div>
                         )}
                       </button>
@@ -182,22 +171,19 @@ function CustomerModal({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Modal Footer Actions */}
-        <div className="flex justify-end gap-2 px-5 py-4 border-t border-slate-100 shrink-0">
-          <button
-            type="button"
+        <div className="flex justify-end gap-2 px-5 py-4 border-t border-ds-outline-variant/10 shrink-0">
+          <Button
+            variant="ghost"
             onClick={onClose}
-            className="px-4 py-2 text-sm font-semibold text-slate-500 hover:bg-slate-100 rounded-lg cursor-pointer transition-colors"
           >
             Batal
-          </button>
-          <button
-            type="button"
+          </Button>
+          <Button
             onClick={handleSave}
             disabled={!canSave}
-            className="px-5 py-2 text-sm font-semibold bg-[var(--mint-300)] text-[var(--mint-900)] hover:bg-[var(--mint-400)] rounded-lg cursor-pointer transition-colors disabled:opacity-40 disabled:pointer-events-none"
           >
             Simpan
-          </button>
+          </Button>
         </div>
       </div>
     </div>
@@ -236,29 +222,29 @@ function CartPanel() {
 
   return (
     <>
-      <div className="flex flex-col h-full border-l border-slate-200 bg-white">
+      <div className="flex flex-col h-full border-l border-ds-outline-variant/15 bg-ds-surface-lowest">
         {/* Customer Selector Card Header */}
-        <header className="p-4 border-b border-slate-200 bg-white shrink-0">
+        <header className="p-4 border-b border-ds-outline-variant/15 bg-ds-surface-lowest shrink-0">
           <div
             onClick={() => setCustomerModalOpen(true)}
-            className="flex items-center justify-between bg-slate-50 p-2 rounded-xl border border-slate-100 cursor-pointer hover:border-[var(--mint-200)] transition-colors"
+            className="flex items-center justify-between bg-ds-surface-low p-2 rounded-xl border border-ds-outline-variant/15 cursor-pointer hover:border-ds-primary/20 transition-colors"
           >
             <div className="flex items-center gap-3">
               <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm ${
-                customer.type === 'member' ? 'bg-[var(--mint-300)] text-[var(--mint-900)]' : 'bg-slate-200 text-slate-600'
+                customer.type === 'member' ? 'bg-ds-primary text-ds-on-primary' : 'bg-ds-surface-high text-ds-on-surface-variant'
               }`}>
                 {customerInitials ?? <Icon name="user" className="h-4 w-4" />}
               </div>
               <div>
-                <div className="font-medium text-slate-900 text-sm">
+                <div className="font-medium text-ds-on-surface text-sm">
                   {customer.name || 'Walk-in Customer'}
                 </div>
-                <div className="text-xs text-slate-500 flex items-center gap-1">
+                <div className="text-xs text-ds-on-surface-variant flex items-center gap-1">
                   {customer.type === 'member' ? (
                     <>
-                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-[var(--mint-500)]" />
-                      <span className="text-[var(--mint-700)] font-semibold">{customer.memberId}</span>
-                      <span className="text-slate-400">·</span>
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-ds-primary" />
+                      <span className="text-ds-primary font-semibold">{customer.memberId}</span>
+                      <span className="text-ds-outline-variant">·</span>
                       <span>{customer.points?.toLocaleString()} pts</span>
                     </>
                   ) : (
@@ -267,40 +253,41 @@ function CartPanel() {
                 </div>
               </div>
             </div>
-            <button
-              type="button"
-              className="p-2 text-slate-400 hover:text-[var(--mint-700)] rounded-lg cursor-pointer"
+            <Button
+              variant="ghost"
+              size="icon"
               title="Change Customer"
             >
               <Icon name="chevron-down" className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         </header>
 
         {/* Scrollable Cart Items */}
-        <div className="flex-1 overflow-y-auto bg-slate-50 p-4">
+        <div className="flex-1 overflow-y-auto bg-ds-surface p-4">
           <div className="flex items-center justify-between mb-4 px-1">
             <div className="flex items-center gap-2">
-              <h2 className="text-sm font-semibold text-slate-800 uppercase tracking-wider">Current Order</h2>
+              <h2 className="text-sm font-semibold text-ds-on-surface uppercase tracking-wider">Current Order</h2>
               {totalQty > 0 && (
-                <span className="rounded-full bg-[var(--mint-300)] text-[var(--mint-900)] text-xs px-2 py-0.5 tabular-nums font-semibold">
+                <span className="rounded-full bg-ds-primary text-ds-on-primary text-xs px-2 py-0.5 tabular-nums font-semibold">
                   {totalQty}
                 </span>
               )}
             </div>
             {items.length > 0 && (
-              <button
-                type="button"
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={clearCart}
-                className="text-xs font-semibold text-red-500 hover:text-red-700 cursor-pointer"
+                className="text-xs text-ds-error hover:text-ds-error"
               >
                 Hapus Semua
-              </button>
+              </Button>
             )}
           </div>
 
           {items.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full text-slate-400 min-h-[250px]">
+            <div className="flex flex-col items-center justify-center h-full text-ds-on-surface-variant min-h-[250px]">
               <ShoppingCart className="size-10 mb-2 opacity-20" />
               <p className="text-sm">Belum ada pesanan</p>
             </div>
@@ -312,22 +299,21 @@ function CartPanel() {
         </div>
 
         {/* Bottom Summary & Actions */}
-        <footer className="bg-white border-t border-slate-200 shrink-0 p-5 space-y-4">
+        <footer className="bg-ds-surface-lowest border-t border-ds-outline-variant/15 shrink-0 p-5 space-y-4">
           <PaymentMethod />
           <CartSummary />
 
           <div className="flex gap-3">
-            <button
-              type="button"
-              className="w-1/3 py-3 px-4 bg-slate-100 text-slate-700 font-semibold rounded-xl hover:bg-slate-200 transition-colors flex items-center justify-center gap-2 text-sm cursor-pointer"
+            <Button
+              variant="outline"
+              className="w-1/3 py-3 px-4"
             >
               Tahan
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
               disabled={items.length === 0}
               onClick={handleCheckout}
-              className="flex-1 py-3 px-4 bg-[var(--mint-300)] text-[var(--mint-900)] font-semibold rounded-xl hover:bg-[var(--mint-400)] transition-colors shadow-sm flex items-center justify-center gap-2 text-base disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
+              className="flex-1 py-3 px-4 text-base"
             >
               Bayar ·{' '}
               {total.toLocaleString('id-ID', {
@@ -335,7 +321,7 @@ function CartPanel() {
                 currency: 'IDR',
                 minimumFractionDigits: 0,
               })}
-            </button>
+            </Button>
           </div>
         </footer>
       </div>
