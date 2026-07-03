@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -25,6 +26,10 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -51,6 +56,8 @@
 
 :root {
   --radius: 0.75rem;
+  --font-geist-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-geist-mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
   /* Brand palette: 
    * #007979 (dark teal), 
    * #24B1B1 (light teal), 
@@ -85,7 +92,12 @@
   --accent: #E6F6F6;
   --accent-foreground: #007979;
 
-  --destructive: #E5484D;
+  --destructive: #9C2730;
+  --destructive-foreground: #FFFFFF;
+  --destructive-soft: #FFE2E4;
+
+  --warning: #C99249;
+  --warning-soft: #FFE0C5;
 
   --border: #EAE2D2;
   --input: #EAE2D2;
@@ -123,6 +135,10 @@
   --accent: #12403F;
   --accent-foreground: #24B1B1;
   --destructive: #FF6368;
+  --destructive-foreground: #FFFFFF;
+  --destructive-soft: #3D1818;
+  --warning: #FFB877;
+  --warning-soft: #3D2E18;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.10);
   --ring: #24B1B1;

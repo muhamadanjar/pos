@@ -161,7 +161,7 @@ function CustomerModal({ onClose }: { onClose: () => void }) {
                             <Icon name="check" className="h-3 w-3 text-ds-on-primary" />
                           </div>
                         )}
-                      </button>
+                      </Button>
                     )
                   })
                 )}

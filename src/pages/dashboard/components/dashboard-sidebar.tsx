@@ -117,47 +117,6 @@ export default function DashboardSidebar() {
         </span>
       </motion.div>
 
-<<<<<<< HEAD
-      {/* Search */}
-      <motion.div
-        className="px-3 py-3 border-b shrink-0"
-        style={{ borderColor: 'var(--ds-outline-variant)' }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
-      >
-        <motion.button
-          onClick={() => setSearchOpen(!searchOpen)}
-          className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors"
-          style={{
-            background: 'var(--ds-surface-mid)',
-            color: 'var(--ds-on-surface-variant)',
-          }}
-          whileHover={{ background: 'var(--ds-surface-highest)' }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <Icon name="search" className="w-4 h-4" />
-          <span>Search menu...</span>
-        </motion.button>
-        {searchOpen && (
-          <motion.input
-            type="text"
-            placeholder="Type to search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full mt-2 px-3 py-2 rounded-lg text-sm border-0 outline-none"
-            style={{
-              background: 'var(--ds-surface-highest)',
-              color: 'var(--ds-on-surface)',
-            }}
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-            autoFocus
-          />
-        )}
-      </motion.div>
-=======
       {/* New Transaction CTA */}
       <div className="px-3 py-3">
         <Link to="/pos">
@@ -167,7 +126,6 @@ export default function DashboardSidebar() {
           </Button>
         </Link>
       </div>
->>>>>>> dev
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-3 py-4">
@@ -177,35 +135,12 @@ export default function DashboardSidebar() {
       </nav>
 
       {/* Footer */}
-<<<<<<< HEAD
-      <motion.div
-        className="border-t px-3 py-4 shrink-0"
-        style={{ borderColor: 'var(--ds-outline-variant)' }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.2 }}
-      >
-        <motion.button
-          className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
-          style={{
-            background: 'transparent',
-            color: 'var(--ds-on-surface-variant)',
-          }}
-          whileHover={{ background: 'var(--ds-surface-mid)', color: 'var(--ds-on-surface)' }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <Icon name="log-out" className="w-4 h-4" />
-          <span>Logout</span>
-        </motion.button>
-      </motion.div>
-=======
       <div className="border-t px-3 py-4 shrink-0" style={{ borderColor: 'var(--ds-outline-variant)' }}>
         <Button variant="ghost" className="w-full justify-start gap-3">
           <Icon name="log-out" className="w-4 h-4" />
           <span>Logout</span>
         </Button>
       </div>
->>>>>>> dev
     </aside>
   )
 }
